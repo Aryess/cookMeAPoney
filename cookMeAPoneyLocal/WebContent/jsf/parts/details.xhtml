@@ -1,0 +1,99 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="partTemplate.xhtml">
+
+
+	<ui:define name="customcss">
+	</ui:define>
+
+	<ui:define name="customscripts">
+
+	</ui:define>
+
+
+	<ui:define name="title">
+		Recipes
+	</ui:define>
+	<ui:define name="header">
+
+		<h2 class="text-left inline">
+			<a href="../menu.jsf ">Results</a>
+		</h2>
+	</ui:define>
+	<ui:define name="body">
+		<div class="row-fluid">
+			<h:form id="form" styleClass="text-center span12 offset3">
+	
+				<p:panelGrid header="#{receipe._title}" styleClass="text-center pull-left">
+					
+					<!-- 	<p:row>
+							<p:column colspan="2">
+								<h:outputText  value="#{receipe._title}" />
+							</p:column>
+						</p:row>
+					 <p:row>
+						<p:column>
+							<span class="icon-user" />
+							<h:outputText id="output" value="#{receipe._nbofperson}" />
+						</p:column>
+						<p:column rowspan="3">
+							<img src="#{receipe._imageref}" style="width: 50%; height: 50s%;" />
+							<h:outputText value="#{receipe._description}" />
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column>
+							<span class="icon-time" />
+							<h:outputText value="#{receipe._preparationduration}" />
+						</p:column>
+					</p:row>
+					<p:row>
+						<p:column>
+							<span class="icon-signal" />
+							<p:rating value="#{receipe._cookexpertise}" />
+						</p:column>
+					</p:row>-->
+					
+			 	 <p:row>
+						<p:column>
+							<span class="icon-user" />
+							<h:outputText id="output" value="#{receipe._nbofperson}" />
+						</p:column>
+						<p:column> 
+							<span class="icon-time" />
+							<h:outputText value="#{receipe._preparationduration}" />
+						 </p:column>
+						<p:column colspan="2" rowspan="2">
+						 	<h:outputText  value="#{receipe._title}" /> 
+						</p:column>
+					</p:row>
+					<p:row> 
+						<p:column>
+							<span class="icon-signal" />
+							<p:rating value="#{receipe._cookexpertise}" />
+						</p:column>
+						<p:column> 
+						 	<span class="icon-barcode"/>
+							<h:outputText value="#{receipe._cooktype}"/>
+						</p:column>		
+					</p:row>			
+				</p:panelGrid>
+			<img src="#{receipe._imageref}" style="width: 5%; height: 5%;" />
+				<h:outputText value="#{receipe._description}" />
+			
+			
+			</h:form>
+			
+				
+			<h:dataTable id="comment" value="#{receipe._comments}" var="comment">
+				<h:column>
+					<h:outputText id="value" value="#{comment._txt}" />
+				</h:column>
+			</h:dataTable>
+		</div>
+	</ui:define>
+
+</ui:composition>
