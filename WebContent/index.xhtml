@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+	<head>
+	    <title><ui:insert name="title">Default</ui:insert> - Cook Me a Poney</title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+		<link href="css/common.css" rel="stylesheet" media="screen"/>
+		<script src="http://code.jquery.com/jquery.js"></script>
+	  	<script src="js/boostrap.min.js"></script>
+	  	<script type="text/javascript">
+			$(document).ready(function() {
+				  $('#logo').fadeIn(3000, function() {
+				        $(this).delay(1000).fadeOut(1000, function() { 
+				        	$(location).attr('href','jsf/menu.jsf'); });
+				        });
+			});
+			
+		</script>
+	</head>
+
+	<body>
+		<div id="splash">
+			<h1>Cook Me</h1>
+			<a href="jsf/menu.jsf"><img id="logo" alt="logo" src="img/logo.jpg"/></a>
+			<h2>... a Poney!</h2>
+		</div>
+	</body>
+
+</html>
+

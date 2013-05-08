@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<head>
+<title><ui:insert name="title">Default</ui:insert> - Cook Me a
+	Poney</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="../css/bootstrap.min.css" rel="stylesheet" media="screen" />
+<link href="../css/common.css" rel="stylesheet" media="screen" />
+</head>
+
+<body>
+	<div id="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<ui:insert name="header">
+				<h2 class="text-left inline">
+					<a href="menu.jsf">Cook Me ...</a>
+				</h2>
+			</ui:insert>
+
+			<h:outputText value="Panel1" rendered="#{loginCtrl.user == null}" />
+			<h:outputText value="Panel2" rendered="#{loginCtrl.user != null}" />
+			<ui:insert name="login">
+				<!-- <h:panelGroup layout="block" rendered="#{loginCtrl.user == null}"
+					styleClass="inline" id="login" /> -->
+				<div Class="inline" id="login">
+					<h4>
+						<a href="#">Login !</a>
+					</h4>
+					<h:form rendered="#{loginCtrl.user != null}">
+						<h:commandLink action="#{loginCtrl.signout}">
+							Se deconnecter
+						</h:commandLink>
+					</h:form>
+
+					<h:form rendered="#{loginCtrl.user == null}">
+
+						<div id="login-content" class="hidden">
+							<div>
+								<h:inputText id="username" value="#{loginCtrl.username}"
+									required="true">
+									<f:validator validatorId="validators.username" />
+								</h:inputText>
+							</div>
+							<h:inputSecret value="#{loginCtrl.pwd}" />
+							<h:commandButton value="OK" action="#{loginCtrl.signin}">
+								<!-- <f:ajax execute="@form" render="output" /> -->
+							</h:commandButton>
+						</div>
+
+					</h:form>
+					<h:outputLink value="login.jsf" styleClass="btn btn-info"  rendered="#{loginCtrl.user == null}">Join CookMeAPoney!</h:outputLink>
+				</div>
+				<!-- </h:panelGroup> -->
+			</ui:insert>
+			<ui:insert name="subtitle">
+				<h3 class="pull-right inline">
+					<a href="menu.jsf"><span class="red">A</span> <span
+						class="orange">P</span><span class="yellow">o</span><span
+						class="green">n</span><span class="blue">e</span><span
+						class="violet">y</span> !</a>
+				</h3>
+			</ui:insert>
+		</div>
+	</div>
+	<!--  div header end -->
+
+	<div id="content" class="clear">
+		<div id="msg" class="alert"></div>
+		<ui:insert name="body">
+					 Default data
+				</ui:insert>
+	</div>
+	<div id="footer">
+		<ui:insert name="footer">
+			<div class="clear">CopyLeft 2013 Cool Pics Educations</div>
+			<!--  <h:commandLink action="#{User.isAdmin}"  rendered="#{!row.active}">
+                      <h:outputText value="Administrate"/>
+                  </h:commandLink> -->
+		</ui:insert>
+		<ui:insert name="js">
+			<script src="http://code.jquery.com/jquery.js"></script>
+			<script src="../js/bootstrap.min.js" type="text/javascript"></script>
+
+		</ui:insert>
+	</div>
+
+</body>
+
+</html>

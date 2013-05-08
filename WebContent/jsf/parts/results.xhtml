@@ -1,0 +1,51 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="partTemplate.xhtml">
+
+
+	<ui:define name="customcss">
+	</ui:define>
+
+	<ui:define name="customscripts">
+
+	</ui:define>
+
+
+	<ui:define name="title">
+		Recipes
+	</ui:define>
+	<ui:define name="header">
+
+		<h2 class="text-left inline">
+			<a href="../menu.jsf ">Results</a>
+		</h2>
+	</ui:define>
+	<ui:define name="body">
+
+		<h:form id="form">
+
+			<p:dataGrid var="receipe" value="#{tableBean.receipes}" columns="3" rows="12"
+				paginator="true"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				rowsPerPageTemplate="9,12,15">
+
+				<p:panel header="#{receipe._title}" style="text-align:center">
+					<h:panelGrid columns="1" style="width:100%">
+						
+						<h:outputText value="#{receipe._description}" />
+						<h:outputText value="#{receipe._nbofperson}"/>
+						
+					</h:panelGrid>
+				</p:panel>
+
+			</p:dataGrid>
+
+		
+
+		</h:form>
+	</ui:define>
+
+</ui:composition>

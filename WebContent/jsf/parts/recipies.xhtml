@@ -1,0 +1,72 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:p="http://primefaces.org/ui" 
+	xmlns:ui="http://java.sun.com/jsf/facelets" template="partTemplate.xhtml">
+
+
+	<ui:define name="customcss">
+	</ui:define>
+	
+	<ui:define name="customscripts">
+		
+	</ui:define>
+	
+	
+	<ui:define name="title">
+		Recipes
+	</ui:define>
+	<ui:define name="header">
+	
+		<h2 class="text-left inline"><a href="../menu.jsf " >Recipes</a></h2>
+	</ui:define>
+	<ui:define name="body">
+	
+		<h:form>
+			<fieldset>
+				<legend> Pick some Unicorn Poop Corn !</legend>
+				<p class="text-center">
+					<img src="../../img/cookpony.png" alt="cookponey" style="width:5%;height:5%;"/>
+				</p>
+				<div class="row-fluid formItem text-center">
+					<div class="span6">
+						<span class="icon-time" /><h:outputText value="Time to spend: " /> 
+           				<p:inputMask value="#{maskController.date}" mask="99:99"/> 
+					</div>
+					<div class="span6">
+						<h:panelGrid columns="1" style="margin-bottom:10px">  
+							<span class="icon-user"/>
+					        <h:outputText id="output" value="#{receipe._nbPeople} people"/>  
+					        <h:inputHidden id="txt2" value="#{receipe._nbPeople}" />  
+					        <p:slider for="txt2" display="output" style="width:200px" displayTemplate="{value} people"/>  
+					    </h:panelGrid> 
+				    
+					</div>
+		         </div>
+		         <div class="row_fluid formItem text-center">
+		         	<div class="span6 text-center">
+		         		<span class="icon-signal"/>
+         			    <h:outputText value="Difficulty :" /> 
+         			    <!-- Sorry but this shit suxx compared to other jqueries plugin like raty.. -->
+	         			<p:rating value="#{ratingController.rating1}" />
+		         	</div>
+		         	<div class="span6">
+		         		<span class="icon-barcode"/> <h:outputText value="Type of food: " /> 
+         			    <p:selectOneMenu value="#{buttonBean.number}">  
+				            <f:selectItem itemLabel="Magic !" itemValue="" />  
+				            <f:selectItem itemLabel="Meal" itemValue="1" />  
+				            <f:selectItem itemLabel="Fish" itemValue="2" />  
+				            <f:selectItem itemLabel="Dessert" itemValue="3" /> 
+				        </p:selectOneMenu>
+		         	</div>
+		         </div>
+		         <div class="row_fluid formItem text-center">
+		         	<div class="span12">
+		         		<p:commandButton value="Submit" /> 
+	         		</div>
+		         </div>
+			</fieldset>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
