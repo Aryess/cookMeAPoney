@@ -72,6 +72,19 @@
 						<p:rating value="#{comment._rating}" />
 					</h:column>
 			</h:dataTable>
+			<!-- IF LOGGED ONLY-->
+			<h:form>
+				<p:panelGrid>
+					<p:row>
+						<p:column>
+							<p:inputTextarea rows="6" cols="33" /> 
+						</p:column>
+						<p:column>
+							<p:rating value="#{comment._rating}" />
+						</p:column>
+					</p:row>
+				</p:panelGrid>
+			</h:form>
 		</div>
 		
 	</ui:define>
