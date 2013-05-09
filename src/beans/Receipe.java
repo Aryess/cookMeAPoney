@@ -9,23 +9,28 @@ public class Receipe {
 
 	private String _title = "";
 	private String _description ="";
-	private String _imageref ="";
+	private String _imageref ="/cookMeAPoneyLocal/img/cookpony.png";
 	private Integer _nbofperson= 0 ;
 	private Integer _cooktype = 0;
 	private Integer _cookexpertise = 0;
-	private String  _preparationduration= "00:00";
+	private Integer  _preparationduration= 0000;
 	private ArrayList<String> _ingredients= new ArrayList<String>();
+	private ArrayList<Comment> _comments = new ArrayList<Comment>();
 	
+	
+
 	public Receipe() {
 		super();
 		this._title = "Derp";
 		this._description = "Erp Derp Poneyz";
-		this._imageref = "";
+		this._imageref = "/cookMeAPoneyLocal/img/cookpony.png";
 		this._nbofperson = 0;
 		this._cooktype = 0;
 		this._cookexpertise = 0;
-		this._preparationduration = "0000";
+		this._preparationduration = 0000;
 		this._ingredients = new ArrayList<String>();
+		this._comments = new ArrayList<Comment>();
+		_comments.add(new Comment());
 	}
 	
 	public String get_title() {
@@ -46,7 +51,7 @@ public class Receipe {
 	public Integer get_cookexpertise() {
 		return _cookexpertise;
 	}
-	public String get_preparationduration() {
+	public Integer get_preparationduration() {
 		return _preparationduration;
 	}
 	public ArrayList<String> get_ingredients() {
@@ -70,13 +75,19 @@ public class Receipe {
 	public void set_cookexpertise(Integer _cookexpertise) {
 		this._cookexpertise = _cookexpertise;
 	}
-	public void set_preparationduration(String _preparationduration) {
+	public void set_preparationduration(Integer _preparationduration) {
 		this._preparationduration = _preparationduration;
 	}
 	public void set_ingredients(ArrayList<String> _ingredients) {
 		this._ingredients = _ingredients;
 	}
-	
+	public ArrayList<Comment> get_comments() {
+		return _comments;
+	}
+
+	public void set_comments(ArrayList<Comment> _comments) {
+		this._comments = _comments;
+	}
 	
 
 	
