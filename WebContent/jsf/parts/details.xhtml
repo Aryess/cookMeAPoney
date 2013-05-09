@@ -25,7 +25,7 @@
 	</ui:define>
 	<ui:define name="body">
 		<div class="row-fluid">
-			<h:form id="form" styleClass="text-center span8 offset3">
+			<h:form id="form" styleClass="text-center span8 offset2">
 	
 				<p:panelGrid header="#{receipe._title}" styleClass="text-center pull-left">
 				
@@ -61,7 +61,7 @@
 
 		</div>
 		<div class="row-fluid">
-			<h:dataTable id="comment" value="#{receipe._comments}" var="comment" styleClass="span8 offset3">
+			<h:dataTable id="comment" value="#{receipe._comments}" var="comment" styleClass="span8 offset2">
 					<h:column classStyle="span2">
 						<h:outputText id="writer" value="#{comment._writer}" />
 					</h:column >
@@ -73,7 +73,10 @@
 					</h:column>
 			</h:dataTable>
 			<!-- IF LOGGED ONLY-->
-			<h:form>
+			
+		</div>
+		<div class="row-fluid">
+			<h:form styelClass="span8 offset2">
 				<p:panelGrid>
 					<p:row>
 						<p:column>
@@ -86,7 +89,6 @@
 				</p:panelGrid>
 			</h:form>
 		</div>
-		
 	</ui:define>
 
 </ui:composition>

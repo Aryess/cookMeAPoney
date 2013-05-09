@@ -3,7 +3,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	template="../partTemplate.xhtml">
+	template="partTemplate.xhtml">
 
 
 	<ui:define name="customcss">
@@ -19,22 +19,22 @@
 	</ui:define>
 	<ui:define name="header">
 
-		<h2 class="text-left inline">
+		<h2 class="text-left inline emr">
 			<a href="../../menu.jsf ">Administration</a>
 		</h2>
 	</ui:define>
-	<ui:define name="login">
-			<!--  We override the template one to get rid of the login part -->
+	 <ui:define name="login">
+		<!--	  We override the template one to get rid of the login part-->
 	</ui:define>
 	
 	<ui:define name="body">
 		<div class="row-fluid ">
-			<h:form rendered="#{loginCtrl.user == null}" styleClass="span8">
-						<div id="login-content" class="hidden">
+			 <h:form rendered="#{loginCtrl.user == null}" styleClass="span8 offset4"> 
+						<div id="login-content" >
+							<h4> Log urself to acces the admin Paneyl</h4>
 							<div>
 								<h:inputText id="username" value="#{loginCtrl.username}"
 									required="true">
-									<f:validator validatorId="validators.username" />
 								</h:inputText>
 							</div>
 							<h:inputSecret value="#{loginCtrl.pwd}" />
@@ -43,7 +43,7 @@
 							</h:commandButton>
 						</div>
 
-					</h:form>	
+				</h:form>	
 	
 		</div>
 		

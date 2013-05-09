@@ -25,15 +25,15 @@
 						<div id="login" class="inline ">
 							<h4><a href="#">Login !</a></h4>
 							<jh:form>
-									<div id="login-content" class="hidden">
-										<div>
-											<jh:inputText id="username" required="true" value="#{loginCtrl.username}">
-											</jh:inputText>
-										</div>
-										<jh:inputSecret value="#{loginCtrl.pwd}" />
-										<jh:commandButton value="OK" action="#{loginCtrl.signin}">
-									    </jh:commandButton>
+								<div id="login-content" class="hidden">
+									<div>
+										<jh:inputText id="username" required="true" value="#{loginCtrl.username}">
+										</jh:inputText>
 									</div>
+									<jh:inputSecret value="#{loginCtrl.pwd}" />
+									<jh:commandButton value="OK" action="#{loginCtrl.signin}">
+								    </jh:commandButton>
+								</div>
 							</jh:form>
 							<a href="login.jsf" class="btn btn-info">Join CookMeAPoney!</a>
 					</div>
@@ -50,15 +50,12 @@
 				</ui:insert>
 			</div>
 			<div id="footer" class="clear">
-			  <ui:insert name="footer">
-			 	 <div>CopyLeft 2013 Cool Pics Educations</div> 
-		 	 	<h2 class="text-right inline"> <a href="menu.jsf">Cook Me ...</a></h2>
-				 <h3 class="pull-right inline"><a href="menu.jsf"><span class="red">A</span> <span class="orange">P</span><span class="yellow">o</span><span class="green">n</span><span class="blue">e</span><span class="violet">y</span> !</a></h3>
-			  </ui:insert>
-			  	<!--<h:outputScript name="jquery/jquery.js" library="primefaces" /> 	  	
-				<script src="../../js/bootstrap.min.js"></script>
-				 <script src="http://code.jquery.com/jquery.js"></script>-->
-			  	<ui:insert name="customscripts"></ui:insert>
+				<ui:insert name="footer">
+				 	 <div>CopyLeft 2013 Cool Pics Educations</div> 
+			 	 	<h2 class="text-right inline"> <a href="menu.jsf">Cook Me ...</a></h2>
+					 <h3 class="pull-right inline"><a href="menu.jsf"><span class="red">A</span> <span class="orange">P</span><span class="yellow">o</span><span class="green">n</span><span class="blue">e</span><span class="violet">y</span> !</a></h3>
+				</ui:insert>
+  		 	<ui:insert name="customscripts"></ui:insert>
 			</div>
 	
 	</jh:body>

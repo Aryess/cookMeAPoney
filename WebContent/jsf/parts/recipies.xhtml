@@ -18,7 +18,7 @@
 	</ui:define>
 	<ui:define name="header">
 	
-		<h2 class="text-left inline"><a href="../menu.jsf " >Recipes</a></h2>
+		<h2 class="text-left inline rcp"><a href="../menu.jsf " >Recipes</a></h2>
 	</ui:define>
 	<ui:define name="body">
 	
@@ -32,15 +32,15 @@
 					<div class="span6 ">
 					
 						<span class="icon-time" /><h:outputText value="Time to spend: " /> 
-           				<p:inputMask value="#{maskController.date}" mask="99:99"/> 
+           				<p:inputMask value="#{searchCtrl.cookduration}" mask="99:99"/> 
 					</div>
 					<div class="span6">
 						<p:panelGrid >
 							<p:row>
 								<p:column>
 									<span class="icon-user"/>
-							        <h:outputText id="output" value="#{receipe._nbofperson} people" />  
-							        <h:inputHidden id="txt2" value="#{receipe._nbofperson}" />
+							        <h:outputText id="output" value="#{searchCtrl.nbPpl} people" />  
+							        <h:inputHidden id="txt2" value="#{searchCtrl.nbPpl}" />
 							        <p:slider for="txt2" display="output" style="width:200px" displayTemplate="{value}"/>  
 							    	  
 								</p:column>
@@ -54,11 +54,11 @@
 		         		<span class="icon-signal"/>
          			    <h:outputText value="Difficulty :" /> 
          			    <!-- Sorry but this shit suxx compared to other jqueries plugin like raty.. -->
-	         			<div class="offset2"><p:rating value="#{ratingController.rating1}" /></div>
+	         			<div class="offset2"><p:rating value="#{searchCtrl.rating}" /></div>
 		         	</div>
 		         	<div class="span6 ">
 		         		<span class="icon-barcode"/> <h:outputText value="Type of food: " /> 
-         			    <p:selectOneMenu value="#{buttonBean.number}">  
+         			    <p:selectOneMenu value="#{searchCtrl.type}">  
 				            <f:selectItem itemLabel="Magic !" itemValue="" />  
 				            <f:selectItem itemLabel="Meal" itemValue="1" />  
 				            <f:selectItem itemLabel="Fish" itemValue="2" />  
@@ -68,7 +68,7 @@
 		         </div>
 		         <div class="row_fluid formItem text-center">
 		         	<div class="span12">
-		         		<p:commandButton value="Submit" /> 
+		         		<p:commandButton value="Submit" action="#{searchCtrl.search}" /> 
 	         		</div>
 		         </div>
 			</fieldset>
