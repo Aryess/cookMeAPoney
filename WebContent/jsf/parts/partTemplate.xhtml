@@ -27,14 +27,12 @@
 							<jh:form>
 									<div id="login-content" class="hidden">
 										<div>
-											<jh:inputText id="username" value="#{user.LName}" required="true">
-												<f:validator validatorId="validators.username" />
+											<jh:inputText id="username" required="true" value="#{loginCtrl.username}">
 											</jh:inputText>
 										</div>
-										<jh:inputSecret value="#{user.pwd}" />
-										<jh:commandButton value="OK" >
-									    	<!-- <f:ajax execute="@form" render="output" /> -->
-										</jh:commandButton>
+										<jh:inputSecret value="#{loginCtrl.pwd}" />
+										<jh:commandButton value="OK" action="#{loginCtrl.signin}">
+									    </jh:commandButton>
 									</div>
 							</jh:form>
 							<a href="login.jsf" class="btn btn-info">Join CookMeAPoney!</a>

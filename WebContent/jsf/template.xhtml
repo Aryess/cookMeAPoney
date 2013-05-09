@@ -42,12 +42,10 @@
 							<div>
 								<h:inputText id="username" value="#{loginCtrl.username}"
 									required="true">
-									<f:validator validatorId="validators.username" />
 								</h:inputText>
 							</div>
 							<h:inputSecret value="#{loginCtrl.pwd}" />
 							<h:commandButton value="OK" action="#{loginCtrl.signin}">
-								<!-- <f:ajax execute="@form" render="output" /> -->
 							</h:commandButton>
 						</div>
 
