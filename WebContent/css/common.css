@@ -143,3 +143,7 @@ a:hover{
 input[type="text"].fieldError{
 	border: solid 1px red;
 }
+
+input[type="password"].fieldError{
+	border: solid 1px red;
+}
