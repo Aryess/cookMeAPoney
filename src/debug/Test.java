@@ -4,7 +4,9 @@ import interfaces.Model;
 
 import java.util.ArrayList;
 
+import dao.Receipes;
 import dao.Users;
+import beans.Receipe;
 import beans.User;
 
 public class Test {
@@ -13,39 +15,36 @@ public class Test {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		//(id, login, pwd, fName, lName, age, email, false)
-		Users uDao = new Users();
-		ArrayList<Model> users;
-		User u = new User(42, "aaaaaaaarLogin", "aPwd", "aName", "aForname", 24, "awesome@mail.adress");
+		//int id, String title, String sumup, String desc, String imgRef, Integer nbPers, String cookType, Integer cookExp, Integer duration
+		Receipes Dao = new Receipes();
+		ArrayList<Receipe> receipes;
+		Receipe i = new Receipe(0, "Carpacio de banane", "Bah... Cest un carpacio quoi, mais avec des bananes", "lorem ipsum & co", "cookpony", 6, "Dessert", 2, 20);
 		
-		//uDao.create(u);
-		u.setEmail("r@gmail.com");
-		uDao.create(u);
-	
-		//u = uDao.getItem(3);
-		System.out.println("Login titi:toto");
-		u = uDao.getUser("titi", "toto");
-		System.out.println(u);
+		Dao.create(i);
 		
-		System.out.println("Login jdoe:toto");
-		u = uDao.getUser("jdoe", "toto");
-		System.out.println(u);
-		
-		System.out.println("Login jdoe:jdoe");
-		u = uDao.getUser("jdoe", "jdoe");
-		System.out.println(u);
+		System.out.println("-------");
+		i = Dao.fromRow(Dao.getLast());
+		System.out.println(i);
+		System.out.println("#######");
+		i.setCooktype("WTF BBQ");
+		Dao.update(i);
+		i = Dao.fromRow(Dao.getLast());
+		System.out.println(i);
+		System.out.println("#######");
 		
 		
-		//uDao.update(u);
 		
-		//uDao.delete(2);
-		//users = uDao.getItems();
-		/*
-		for(Model user : users) {
-			System.out.println(user);
+		receipes = Dao.getReceipes(180, 5, 3, "Salad");	
+		Dao.delete(i);
+		//users = Dao.getItems();
+		//*
+		for(Model item : receipes) {
+			System.out.println(item);
 		}
 		//*/
 		
 	}
+	
+	
 
 }
