@@ -1,18 +1,17 @@
 package beans;
 
-import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
 
-
+@ManagedBean
 public class UserTableBean {
 
 	
@@ -60,5 +59,9 @@ public class UserTableBean {
 				((User) event.getObject()).getLogin());
 
 		FacesContext.getCurrentInstance().addMessage(null, msg);
+	}
+	
+	public void deleteUser(){
+		
 	}
 }

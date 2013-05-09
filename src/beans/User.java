@@ -35,9 +35,9 @@ public class User extends Model{
 	}
 	
 	public User() {
-		//setInfos(0, null, null, null, null, 0, null, false);
+		setInfos(0, null, null, null, null, 0, null, false);
 		//local debug, feel free to get rid of it
-		setInfos(0, "test", "pwd","Doe", null, 0, null, false);
+		//setInfos(0, "test", "pwd","Doe", null, 0, null, false);
 		this.DAO = new Users();
 	}
 
