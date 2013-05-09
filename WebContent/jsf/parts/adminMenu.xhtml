@@ -3,7 +3,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	template="../partTemplate.xhtml">
+	template="partTemplate.xhtml">
 
 
 	<ui:define name="customcss">
@@ -22,18 +22,18 @@
 		<h2 class="text-left inline">
 			<a href="../../menu.jsf ">Administration</a>
 		</h2>
-		<p class="inline">
+		<!-- <p class="inline">
 			Last connection : <h:outputText value="#{user.lastConnection}"/>
 			<h:outputText value="#{user.lastConnection}-#{user.lastDC}"/>
-		</p>
+		</p> -->
 	</ui:define>
 	<ui:define name="login">
-			Welcome <h:outputText value="#{user.login}"/>
+			<!--  Welcome <h:outputText value="#{user.login}"/> -->
 	</ui:define>
 	
 	<ui:define name="body">
-		<a class="btn emr span4 fill" href="emergencies.jsf"> Users Management </a>
-		<a class="btn rcp span4 fill" href="recipies.jsf"> Recipies Management</a>
+		<a class="btn emr span4 fill" href="userManagement.jsf"> Users Management </a>
+		<a class="btn rcp span4 fill" href=".jsf"> Recipies Management</a>
 	</ui:define>
 
 </ui:composition>
