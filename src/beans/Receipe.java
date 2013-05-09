@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
-@ManagedBean
+
+
 public class Receipe {
 
 	private String _title = "";
