@@ -25,7 +25,7 @@ public class UserTableBean {
 	public UserTableBean() {
 		usersSmall = new ArrayList<User>();
 
-		populateRandomUsers(usersSmall, 50);
+		populateRandomUsers(usersSmall, 5);
 
 		mediumUsersModel = new UserDataModel(usersSmall);
 	}
