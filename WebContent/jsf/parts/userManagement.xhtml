@@ -21,7 +21,7 @@
 
 		<h2 class="text-left inline">
 			<a href="../../menu.jsf ">
-		User Management</a>
+				User Management</a>
 		</h2>
 	</ui:define>
 	<ui:define name="login">
@@ -29,7 +29,52 @@
 	</ui:define>
 	
 	<ui:define name="body">
-	
+			<h:form id="form">  
+  
+    <p:growl id="growl" showDetail="true"/>  
+  
+    <p:dataTable id="users" var="user" value="#{userTableBean.mediumUsersModel}" paginator="true" rows="10"  
+                 selection="#{userTableBean.selectedUser}" selectionMode="single">  
+  
+        <p:ajax event="rowSelect" listener="#{userTableBean.onRowSelect}"   
+                    update=":form:display :form:growl" oncomplete="userDialog.show()" />  
+        <p:ajax event="rowUnselect" listener="#{userTableBean.onRowUnselect}" update=":form:growl"/>  
+  
+        <f:facet name="header">  
+            Select an user Pony ! 
+        </f:facet>  
+  
+        <p:column headerText="Username">  
+            #{user.username}  
+        </p:column>  
+  
+        <p:column headerText="First Name">  
+            #{user.FName}  
+        </p:column>  
+  
+        <p:column headerText="Admin" >  
+            #{user.isAdmin}  
+        </p:column>  
+  
+    </p:dataTable>  
+  
+    <p:dialog id="dialog" header="User Detail" widgetVar="userDialog" resizable="false"  
+                showEffect="fade" hideEffect="explode">  
+  
+        <h:panelGrid id="display" columns="2" cellpadding="4">
+            <h:outputText value="Username" />  
+            <h:outputText value="#{userTableBean.selectedUser.login}" />  
+  
+            <h:outputText value="Last Name" />  
+            <h:outputText value="#{userTableBean.selectedUser.LName}" />  
+  
+            <h:outputText value="First Name" />  
+            <h:outputText value="#{userTableBean.selectedUser.FName}" />  
+  
+        </h:panelGrid>  
+    </p:dialog>  
+  
+</h:form>
 		
 	</ui:define>
 

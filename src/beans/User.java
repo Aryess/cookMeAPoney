@@ -21,7 +21,7 @@ public class User extends Model{
 	protected String _email;
 	protected Boolean _isAdmin;
 	protected Date _lastConnection;
-	protected Date _lastDC;
+	protected Integer _lastDC;
 
  	
 	public User(int id, String login, String pwd, String fName, String lName, int age, String email) {
@@ -35,7 +35,9 @@ public class User extends Model{
 	}
 	
 	public User() {
-		setInfos(0, null, null, null, null, 0, null, false);
+		//setInfos(0, null, null, null, null, 0, null, false);
+		//local debug, feel free to get rid of it
+		setInfos(0, "test", "pwd","Doe", null, 0, null, false);
 		this.DAO = new Users();
 	}
 
@@ -48,7 +50,7 @@ public class User extends Model{
 	public String getEmail() {	return _email;}
 	public Boolean getIsAdmin(){ return _isAdmin;}
 	public Date getLastconnection() {return _lastConnection;}
-	public Date getLastDC() {return _lastDC;}
+	public Integer getLastDC() {return _lastDC;}
 
 
 	
@@ -63,7 +65,7 @@ public class User extends Model{
 	public void setEmail(String _email) {this._email = _email;}
 	public void setIsAdmin(Boolean _isAdmin){this._isAdmin = _isAdmin;}
 	public void setLastConnection(Date _lastConnection) {this._lastConnection = _lastConnection;}
-	public void setLastDC(Date _lastDC){this._lastDC = _lastDC;}
+	public void setLastDC(Integer _lastDC){this._lastDC = _lastDC;}
 	
 	private void setInfos(int id, String login, String pwd, String fName, String lName, int age, String email, Boolean isAdmin) {
 		this.setId(id);

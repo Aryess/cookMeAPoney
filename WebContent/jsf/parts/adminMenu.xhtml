@@ -22,18 +22,22 @@
 		<h2 class="text-left inline">
 			<a href="../../menu.jsf ">Administration</a>
 		</h2>
-		<!-- <p class="inline">
+		 <p class="inline offset5">
 			Last connection : <h:outputText value="#{user.lastConnection}"/>
-			<h:outputText value="#{user.lastConnection}-#{user.lastDC}"/>
-		</p> -->
+			<h:outputText value="#{user.lastDC}"/>
+		</p> 
 	</ui:define>
 	<ui:define name="login">
-			<!--  Welcome <h:outputText value="#{user.login}"/> -->
+		<p class=" pull-right">
+		 	Welcome <h:outputText value="#{user.login}"/>
+		</p>
 	</ui:define>
 	
 	<ui:define name="body">
-		<a class="btn emr span4 fill" href="userManagement.jsf"> Users Management </a>
-		<a class="btn rcp span4 fill" href=".jsf"> Recipies Management</a>
+		<span style="margin-left:30%">
+			<a  href="userManagement.jsf" class=" corner emr span4 fill"><h4 > Users Management </h4></a>
+			 <a  href="receipeManagement.jsf" class=" corner rcp span4   fill"><h4>Recipies Management</h4></a>
+		</span>	
 	</ui:define>
 
 </ui:composition>
