@@ -45,6 +45,16 @@ a:hover{
 
 	display : block;
 }
+
+.corner{
+	-webkit-border-bottom-right-radius: 50px;
+	-webkit-border-bottom-left-radius: 50px;
+	-moz-border-radius-bottomright: 50px;
+	-moz-border-radius-bottomleft: 50px;
+	border-bottom-right-radius: 50px;
+	border-bottom-left-radius: 50px;
+	
+}
 .emr{
 	background: #fb83fa; /* Old browsers */
 	background: -moz-linear-gradient(top, #fb83fa 0%, #e93cec 100%); /* FF3.6+ */
@@ -81,7 +91,7 @@ a:hover{
 
 .fill{
 	
-	margin-left:5%;
+	margin-left:15%;
 	display: block;
 	text-align:center;
   	height: 80%;
@@ -110,7 +120,10 @@ a:hover{
     -o-transform: rotate(0deg); /* Opera */
 	
 }
-
+.ui-widget-content, .ui-panelgrid td, .ui-widget, .gridcell{
+	border: 0px none;
+	
+}
 .hidden{
 	display:none;
 }

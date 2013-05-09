@@ -13,7 +13,7 @@ import javax.faces.event.ActionEvent;
 import javax.servlet.ServletContext;  
    
 @ManagedBean
-public class TableBean implements Serializable {  
+public class ReceipeTableBean implements Serializable {  
       
     
   
@@ -21,7 +21,7 @@ public class TableBean implements Serializable {
       
     private Receipe selectedReceipe;  
   
-    public TableBean() {  
+    public ReceipeTableBean() {  
         receipes = new ArrayList<Receipe>();  
           
         populateRandomReceipes(receipes, 50);  
