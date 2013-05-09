@@ -1,5 +1,7 @@
 package beans;
 
+import java.util.Date;
+
 import interfaces.Model;
 
 import javax.faces.bean.ManagedBean;
@@ -18,7 +20,8 @@ public class User extends Model{
 	protected int _age;
 	protected String _email;
 	protected Boolean _isAdmin;
-	
+	protected Date _lastConnection;
+	protected Date _lastDC;
 
  	
 	public User(int id, String login, String pwd, String fName, String lName, int age, String email) {
@@ -44,6 +47,12 @@ public class User extends Model{
 	public int getAge() {return _age;}
 	public String getEmail() {	return _email;}
 	public Boolean getIsAdmin(){ return _isAdmin;}
+	public Date getLastconnection() {return _lastConnection;}
+	public Date getLastDC() {return _lastDC;}
+
+
+	
+
 	
 	public void setId(int _id) {this._id = _id;}
 	public void setLogin(String _login) {this._login = _login;}
@@ -53,6 +62,8 @@ public class User extends Model{
 	public void setAge(int _age) {this._age = _age;}
 	public void setEmail(String _email) {this._email = _email;}
 	public void setIsAdmin(Boolean _isAdmin){this._isAdmin = _isAdmin;}
+	public void setLastConnection(Date _lastConnection) {this._lastConnection = _lastConnection;}
+	public void setLastDC(Date _lastDC){this._lastDC = _lastDC;}
 	
 	private void setInfos(int id, String login, String pwd, String fName, String lName, int age, String email, Boolean isAdmin) {
 		this.setId(id);
