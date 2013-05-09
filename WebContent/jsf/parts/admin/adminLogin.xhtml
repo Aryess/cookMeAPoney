@@ -1,0 +1,52 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="../partTemplate.xhtml">
+
+
+	<ui:define name="customcss">
+	</ui:define>
+
+	<ui:define name="customscripts">
+
+	</ui:define>
+
+
+	<ui:define name="title">
+		Administration
+	</ui:define>
+	<ui:define name="header">
+
+		<h2 class="text-left inline">
+			<a href="../../menu.jsf ">Administration</a>
+		</h2>
+	</ui:define>
+	<ui:define name="login">
+			<!--  We override the template one to get rid of the login part -->
+	</ui:define>
+	
+	<ui:define name="body">
+		<div class="row-fluid ">
+			<h:form rendered="#{loginCtrl.user == null}" styleClass="span8">
+						<div id="login-content" class="hidden">
+							<div>
+								<h:inputText id="username" value="#{loginCtrl.username}"
+									required="true">
+									<f:validator validatorId="validators.username" />
+								</h:inputText>
+							</div>
+							<h:inputSecret value="#{loginCtrl.pwd}" />
+							<h:commandButton value="OK" action="#{loginCtrl.signin}">
+								<!-- <f:ajax execute="@form" render="output" /> -->
+							</h:commandButton>
+						</div>
+
+					</h:form>	
+	
+		</div>
+		
+	</ui:define>
+
+</ui:composition>
