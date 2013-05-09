@@ -110,7 +110,10 @@ a:hover{
     -o-transform: rotate(0deg); /* Opera */
 	
 }
-
+.ui-widget-content, .ui-panelgrid td, .ui-widget, .gridcell{
+	border: 0px none;
+	
+}
 .hidden{
 	display:none;
 }
@@ -138,8 +141,4 @@ a:hover{
 }
 .violet{
 	color:purple;
-}
-
-input[type="text"].fieldError{
-	border: solid 1px red;
 }

@@ -6,13 +6,6 @@ public class Comment {
 	private String _txt;
 	private Integer _rating;
 	private Date _written;
-	public Date get_written() {
-		return _written;
-	}
-
-	public void set_written(Date _written) {
-		this._written = _written;
-	}
 	private User _writer;
 	
 	public Comment(){
@@ -22,6 +15,15 @@ public class Comment {
 this._rating=1;
 		
 	}
+	
+	public Date get_written() {
+		return _written;
+	}
+
+	public void set_written(Date _written) {
+		this._written = _written;
+	}
+	
 	
 	public String get_txt() {
 		return _txt;
