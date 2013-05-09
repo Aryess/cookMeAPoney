@@ -15,13 +15,13 @@
 
 
 	<ui:define name="title">
-		User Management
+		Receipe Management
 	</ui:define>
 	<ui:define name="header">
 
 		<h2 class="text-left inline">
 			<a href="../../menu.jsf ">
-		User Management</a>
+		Receipe Management</a>
 		</h2>
 	</ui:define>
 	<ui:define name="login">
@@ -29,7 +29,61 @@
 	</ui:define>
 	
 	<ui:define name="body">
-	
+		<h:form id="form" >  
+			  
+			    <p:growl id="growl" showDetail="true"/>  
+			  
+			    <p:dataTable id="receipes"  styleClass="span6" var="receipe" value="#{receipeTableBean.mediumReceipesModel}" paginator="true" rows="10"  
+			                 selection="#{receipeTableBean.selectedReceipe}" selectionMode="single">  
+			  
+			        <p:ajax event="rowSelect" listener="#{receipeTableBean.onRowSelect}"   
+			                    update=":form:dialog:display :form:growl" oncomplete="receipeDialog.show()" />  
+			        <p:ajax event="rowUnselect" listener="#{receipeTableBean.onRowUnselect}" update=":form:growl"/>  
+			  
+			        <f:facet name="header">  
+			            Select an receipe Pony ! 
+			        </f:facet>  
+			  
+			        <p:column headerText="Receipename"> 
+			        erp 
+			        </p:column>  
+			  
+			        <p:column headerText="First Name"> 
+			        derp 
+			            <!--  #{receipe.FName}   -->
+			        </p:column>  
+			  
+			        <p:column headerText="Admin" >  
+			           <p:selectBooleanCheckbox value="#{receipeTableBean.selectedReceipe.IsAdmin}" disabled="true"/>  
+		          </p:column>  
+			  
+			  		<p:column headerText="Delete">
+			  			<p:commandLink action="#{receipeTableBean.deleteReceipe}"/>
+			  		</p:column>
+			    </p:dataTable>  
+		      <h:form id="dialog" styleClass="span6" header="Receipe Detail" widgetVar="receipeDialog" resizable="false"  
+		                showEffect="fade" hideEffect="explode" >  
+		  
+		        <h:panelGrid id="display" columns="5" cellpadding="4">
+		         <!--    <h:outputText value="Receipename" />  
+		            <p:inputText value="#{receipeTableBean.selectedReceipe.getLogin}" />  
+		   -->
+		            <h:outputText value="Last Name" />  
+		            <p:inputText value="#{receipeTableBean.selectedReceipe.getLName}" />  
+		  
+		            <h:outputText value="First Name" />  
+		            <p:inputText value="#{receipeTableBean.selectedReceipe.getFName}" />  
+		            
+		            <h:outputText value="Email" />  
+		            <p:inputText value="#{receipeTableBean.selectedReceipe.getEmail}" />  
+		            
+		            <h:outputText value="isAdmin" />  
+		            <p:selectBooleanCheckbox value="#{receipeTableBean.selectedReceipe.getIsAdmin}" />  
+		            
+		            
+		  
+		        </h:panelGrid> 
+			</h:form>
 		
 	</ui:define>
 
