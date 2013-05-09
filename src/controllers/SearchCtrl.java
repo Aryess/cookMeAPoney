@@ -1,5 +1,6 @@
 package controllers;
 
+
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import org.primefaces.event.RateEvent;
@@ -59,5 +60,5 @@ public class SearchCtrl {
 	public void setType(Integer type) {
 		this.type = type;
 	}
-	
+
 }
