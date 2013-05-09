@@ -29,28 +29,34 @@
 					<img src="../../img/cookpony.png" alt="cookponey" style="width:5%;height:5%;"/>
 				</p>
 				<div class="row-fluid formItem text-center">
-					<div class="span6">
+					<div class="span6 ">
+					
 						<span class="icon-time" /><h:outputText value="Time to spend: " /> 
            				<p:inputMask value="#{maskController.date}" mask="99:99"/> 
 					</div>
 					<div class="span6">
-						<h:panelGrid columns="1" style="margin-bottom:10px">  
-							<span class="icon-user"/>
-					        <h:outputText id="output" value="#{receipe._nbPeople} people"/>  
-					        <h:inputHidden id="txt2" value="#{receipe._nbPeople}" />  
-					        <p:slider for="txt2" display="output" style="width:200px" displayTemplate="{value} people"/>  
-					    </h:panelGrid> 
-				    
+						<p:panelGrid >
+							<p:row>
+								<p:column>
+									<span class="icon-user"/>
+							        <h:outputText id="output" value="#{receipe._nbofperson} people" />  
+							        <h:inputHidden id="txt2" value="#{receipe._nbofperson}" />
+							        <p:slider for="txt2" display="output" style="width:200px" displayTemplate="{value}"/>  
+							    	  
+								</p:column>
+							</p:row>
+					
+						</p:panelGrid>
 					</div>
 		         </div>
 		         <div class="row_fluid formItem text-center">
-		         	<div class="span6 text-center">
+		         	<div class="span6 text-center ">
 		         		<span class="icon-signal"/>
          			    <h:outputText value="Difficulty :" /> 
          			    <!-- Sorry but this shit suxx compared to other jqueries plugin like raty.. -->
-	         			<p:rating value="#{ratingController.rating1}" />
+	         			<div class="offset2"><p:rating value="#{ratingController.rating1}" /></div>
 		         	</div>
-		         	<div class="span6">
+		         	<div class="span6 ">
 		         		<span class="icon-barcode"/> <h:outputText value="Type of food: " /> 
          			    <p:selectOneMenu value="#{buttonBean.number}">  
 				            <f:selectItem itemLabel="Magic !" itemValue="" />  
