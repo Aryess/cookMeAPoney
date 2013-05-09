@@ -107,6 +107,32 @@ public abstract class DAO{
 		return (rs == 1);
 	}
 	
+	public HashMap<String, String> getLast() {
+		java.sql.ResultSet rs;
+		ResultSetMetaData resultMeta;
+		HashMap<String, String> row = new HashMap<String, String>();
+		int nbCol = 0;
+		String query = "SELECT * FROM " + this.tableName + " ORDER BY " + this.idField + " DESC LIMIT 1";
+		System.out.println(query);
+		try {
+			rs = DB.executeQuery(query);
+			resultMeta= rs.getMetaData();
+			nbCol = resultMeta.getColumnCount();
+			
+			while (rs.next()) {
+				for (int i = 1; i <= nbCol; i++) {
+					String val = "";
+					if(rs.getObject(i) != null)
+						val = rs.getObject(i).toString();
+					row.put(resultMeta.getColumnName(i), val);
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return row;
+	}
+	
 	abstract public Boolean delete(Model m);
 	
 	public abstract Model getItem(int itemId);

@@ -25,16 +25,19 @@ public class User extends Model{
 
  	
 	public User(int id, String login, String pwd, String fName, String lName, int age, String email) {
+		super();
 		setInfos(id, login, pwd, fName, lName, age, email, false);
 		this.DAO = new Users();
 	}
 
 	public User(int id, String login, String pwd, String fName, String lName, int age, String email, Boolean isAdmin) {
+		super();
 		setInfos(id, login, pwd, fName, lName, age, email, isAdmin);
 		this.DAO = new Users();
 	}
 	
 	public User() {
+		super();
 		setInfos(0, null, null, null, null, 0, null, false);
 		this.DAO = new Users();
 	}
@@ -51,9 +54,6 @@ public class User extends Model{
 	public Date getLastDC() {return _lastDC;}
 
 
-	
-
-	
 	public void setId(int _id) {this._id = _id;}
 	public void setLogin(String _login) {this._login = _login;}
 	public void setPwd(String _pwd) {this._pwd = _pwd;}

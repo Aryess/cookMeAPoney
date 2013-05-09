@@ -1,26 +1,43 @@
 package beans;
 
+import interfaces.Model;
+
 import java.util.ArrayList;
 import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
 
+import dao.Receipes;
 
-public class Receipe {
 
-	private String _title = "";
-	private String _description ="";
-	private String _imageref ="/cookMeAPoneyLocal/img/cookpony.png";
-	private Integer _nbofperson= 0 ;
-	private Integer _cooktype = 0;
-	private Integer _cookexpertise = 0;
-	private Integer  _preparationduration= 0000;
-	private ArrayList<String> _ingredients= new ArrayList<String>();
-	private ArrayList<Comment> _comments = new ArrayList<Comment>();
-	
+public class Receipe extends Model{
+
+	/**
+	 * 
+		Column	Type	Comment
+		idreceipes	int(11) Auto Increment	 
+		title	varchar(45)	 
+		sumup	varchar(250) NULL	 
+		description	varchar(500) NULL	 
+		imageref	varchar(45) NULL	 
+		nbofperson	int(11)	 
+		cooktype	varchar(100)	 
+		cookexpertise	int(11)	 
+		preparationduration	int(11)	 
+	 */
+	private Integer id;
+	private String title;
+	private String sumup;
+	private String description;
+	private String imageref;
+	private Integer nbofperson;
+	private String cooktype;
+	private Integer cookexpertise;
+	private Integer  preparationduration;
 	
 
 	public Receipe() {
+		/*
 		super();
 		this._title = "Derp";
 		this._description = "Erp Derp Poneyz";
@@ -32,64 +49,61 @@ public class Receipe {
 		this._ingredients = new ArrayList<String>();
 		this._comments = new ArrayList<Comment>();
 		_comments.add(new Comment());
+		//*/
 	}
 	
-	public String get_title() {
-		return _title;
-	}
-	public String get_description() {
-		return _description;
-	}
-	public String get_imageref() {
-		return _imageref;
-	}
-	public Integer get_nbofperson() {
-		return _nbofperson;
-	}
-	public Integer get_cooktype() {
-		return _cooktype;
-	}
-	public Integer get_cookexpertise() {
-		return _cookexpertise;
-	}
-	public Integer get_preparationduration() {
-		return _preparationduration;
-	}
-	public ArrayList<String> get_ingredients() {
-		return _ingredients;
-	}
-	public void set_title(String _title) {
-		this._title = _title;
-	}
-	public void set_description(String _description) {
-		this._description = _description;
-	}
-	public void set_imageref(String _imageref) {
-		this._imageref = _imageref;
-	}
-	public void set_nbofperson(Integer _nbofperson) {
-		this._nbofperson = _nbofperson;
-	}
-	public void set_cooktype(Integer _cooktype) {
-		this._cooktype = _cooktype;
-	}
-	public void set_cookexpertise(Integer _cookexpertise) {
-		this._cookexpertise = _cookexpertise;
-	}
-	public void set_preparationduration(Integer _preparationduration) {
-		this._preparationduration = _preparationduration;
-	}
-	public void set_ingredients(ArrayList<String> _ingredients) {
-		this._ingredients = _ingredients;
-	}
-	public ArrayList<Comment> get_comments() {
-		return _comments;
+	public Receipe(int id, String title, String sumup, String desc, String imgRef, Integer nbPers, String cookType, Integer cookExp, Integer duration) {
+		super();
+		this.setInfos(id, title, sumup, desc, imgRef, nbPers, cookType, cookExp, duration);
+		this.setDao(new Receipes());
 	}
 
-	public void set_comments(ArrayList<Comment> _comments) {
-		this._comments = _comments;
+
+	public Integer getId() {return id;}
+	public String getTitle() {return title;}
+	public String getSumup() {return sumup;}
+	public String getDescription() {return description;}
+	public String getImageref() {return imageref;}
+	public Integer getNbofperson() {return nbofperson;}
+	public String getCooktype() {return cooktype;}
+	public Integer getCookexpertise() {return cookexpertise;}
+	public Integer getPreparationduration() {return preparationduration;}
+
+	public void setId(Integer id) {this.id = id;}
+	public void setTitle(String title) {this.title = title;}
+	public void setSumup(String sumup) {this.sumup = sumup;}
+	public void setDescription(String description) {this.description = description;}
+	public void setImageref(String imageref) {this.imageref = imageref;}
+	public void setNbofperson(Integer nbofperson) {this.nbofperson = nbofperson;}
+	public void setCooktype(String cooktype) {this.cooktype = cooktype;}
+	public void setCookexpertise(Integer cookexpertise) {this.cookexpertise = cookexpertise;}
+	public void setPreparationduration(Integer preparationduration) {this.preparationduration = preparationduration;}
+	
+	
+	private void setInfos(int id, String title, String sumup, String desc, String imgRef, Integer nbPers, String cookType, Integer cookExp, Integer duration) {
+		this.setId(id);
+		this.setTitle(title);
+		this.setSumup(sumup);
+		this.setDescription(desc);
+		this.setImageref(cookType);
+		this.setNbofperson(nbPers);
+		this.setCooktype(cookType);
+		this.setCookexpertise(cookExp);
+		this.setPreparationduration(duration);
 	}
 	
-
+	public String toString() {
+		String toS = "Recipe id: " + this.id + "\n";
+		toS += "Title: " + this.title + "\n";
+		toS += "Sumup " + this.sumup + "\n"; 
+		toS += "Type: " + this.cooktype + "\n";
+		toS += "Exp: " + this.cookexpertise + "\n";
+		toS += "Duration: " + this.preparationduration + "\n";
+		return toS;
+	}
 	
+	public void clone(Model item) {
+		Receipe r = (Receipe) item;
+		this.setInfos(r.getId(), r.getTitle(), r.getSumup(), r.getDescription(), r.getImageref(), r.getNbofperson(), r.getCooktype(), r.getCookexpertise(), r.getPreparationduration());
+	}
 }
