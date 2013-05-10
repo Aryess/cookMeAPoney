@@ -2,11 +2,6 @@ package beans;
 
 import interfaces.Model;
 
-import java.util.ArrayList;
-import java.util.Date;
-
-import javax.faces.bean.ManagedBean;
-
 import dao.Receipes;
 
 

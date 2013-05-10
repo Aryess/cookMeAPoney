@@ -2,8 +2,6 @@ package beans;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
-
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
