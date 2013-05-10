@@ -133,6 +133,12 @@ a:hover{
 .clear{
 	clear:both;
 }
+
+.part {
+	
+	color:white !important;
+	
+}
 /*COLORS !!1*/
 .red{
 	color:red;

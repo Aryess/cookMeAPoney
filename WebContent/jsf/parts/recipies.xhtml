@@ -18,7 +18,7 @@
 	</ui:define>
 	<ui:define name="header">
 	
-		<h2 class="text-left inline rcp"><a href="../menu.jsf " >Recipes</a></h2>
+		<h2 class="text-left inline rcp"><a href="../menu.jsf " class="part">Recipes</a></h2>
 	</ui:define>
 	<ui:define name="body">
 	
@@ -41,7 +41,7 @@
 									<span class="icon-user"/>
 							        <h:outputText id="output" value="#{searchCtrl.nbPpl} people" />  
 							        <h:inputHidden id="txt2" value="#{searchCtrl.nbPpl}" />
-							        <p:slider for="txt2" display="output" style="width:200px" displayTemplate="{value}"/>  
+							        <p:slider for="txt2" display="output" style="width:200px" maxValue ="10" displayTemplate="{value}"/>  
 							    	  
 								</p:column>
 							</p:row>

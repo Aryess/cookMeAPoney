@@ -23,6 +23,8 @@ public class UserTableBean {
 	private UserDataModel mediumUsersModel;
 
 	public UserTableBean() {
+		selectedUser = new User();
+		
 		usersSmall = new ArrayList<User>();
 
 		populateRandomUsers(usersSmall, 5);
@@ -32,7 +34,7 @@ public class UserTableBean {
 
 	private void populateRandomUsers(List<User> list, int size) {
 		for (int i = 0; i < size; i++)
-			list.add(new User());
+			list.add(new User(i, "login"+i, "pwd"+i, "fName"+i, "lName"+i, i, "email"+i, (i%2==0)?true:false));
 	}
 
 	public User getSelectedUser() {

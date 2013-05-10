@@ -19,8 +19,8 @@
 	</ui:define>
 	<ui:define name="header">
 
-		<h2 class="text-left inline">
-			<a href="../../menu.jsf ">
+		<h2 class="text-left inline emr">
+			<a href="../../menu.jsf " class="part">
 				User Management</a>
 		</h2>
 	</ui:define>
@@ -37,7 +37,7 @@
 			                 selection="#{userTableBean.selectedUser}" selectionMode="single">  
 			  
 			        <p:ajax event="rowSelect" listener="#{userTableBean.onRowSelect}"   
-			                    update=":form:dialog:display :form:growl" oncomplete="userDialog.show()" />  
+			                    update=":form:dialog :form:growl" oncomplete="userDialog.show()" />  
 			        <p:ajax event="rowUnselect" listener="#{userTableBean.onRowUnselect}" update=":form:growl"/>  
 			  
 			        <f:facet name="header">  
@@ -60,26 +60,35 @@
 			  			<p:commandLink action="#{userTableBean.deleteUser}"/>
 			  		</p:column>
 			    </p:dataTable>  
-		       <h:form id="dialog" styleClass="span6" header="User Detail" widgetVar="userDialog" resizable="false"  
-		                showEffect="fade" hideEffect="explode" rendered="#{userTableBean.selectedUser != null}" >  
-		  
-		        <h:panelGrid id="display" columns="5" cellpadding="4">
-		            <h:outputText value="Username" />  
-		            <p:inputText value="#{userTableBean.selectedUser.login}" />  
-		   
-		            <h:outputText value="Last Name" />  
-		            <p:inputText value="#{userTableBean.selectedUser.lName}" />  
-		  
-		            <h:outputText value="First Name" />  
-		            <p:inputText value="#{userTableBean.selectedUser.fName}" />  
-		            
-		            <h:outputText value="Email" />  
-		            <p:inputText value="#{userTableBean.selectedUser.email}" />  
-		            
-		            <h:outputText value="isAdmin" />  
-		            <p:selectBooleanCheckbox value="#{userTableBean.selectedUser.isAdmin}" />  
-		  
-		        </h:panelGrid> 
+		       <h:form id="dialog" styleClass="span6 offset4 " header="User Detail" widgetVar="userDialog" resizable="false" >  
+		  			<div class="span4 offset4 ">
+		        <!--  <h:panelGrid id="display" columns="5" cellpadding="4">  -->
+		         		<div>
+		       	            <h:outputText value="Username" />  
+				            <p:inputText value="#{userTableBean.selectedUser.login}" />  
+			         	</div>
+			         	<div>
+	       	            
+			         	<h:outputText value="Last Name" />  
+			            <p:inputText value="#{userTableBean.selectedUser.LName}" />  
+			            </div>
+			            <div>
+	       	            
+			            <h:outputText value="First Name" />  
+			            <p:inputText value="#{userTableBean.selectedUser.FName}" />
+		                </div>
+		                <div>
+	       	            
+		                <h:outputText value="Email" />  
+			            <p:inputText value="#{userTableBean.selectedUser.email}" />  
+			            </div>
+			            <div>
+	       	            
+			            <h:outputText value="isAdmin" />  
+			            <p:selectBooleanCheckbox value="#{userTableBean.selectedUser.isAdmin}" />  
+		   				</div>
+		   			</div>
+		   		<!--  </h:panelGrid>  -->
 			</h:form>
 			 
 	    </h:form>
