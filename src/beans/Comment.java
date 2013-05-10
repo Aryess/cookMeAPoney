@@ -1,47 +1,54 @@
 package beans;
 
-import java.util.Date;
+import interfaces.Model;
 
-public class Comment {
+public class Comment extends Model{
+	private Integer _id;
 	private String _txt;
 	private Integer _rating;
-	private Date _written;
-	private User _writer;
+	private Integer _idUser;
+	private Integer _idReceipe;
 	
 	public Comment(){
-		this._txt=" Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tincidunt venenatis eros, at pretium nibh rutrum at. Vestibulum faucibus, lacus eu dignissim tempor, purus mauris fermentum sapien, quis mollis nibh dui vitae metus. Vestibulum vestibulum lectus id odio rutrum eleifend. In laoreet sapien ut enim mollis suscipit. Duis urna nibh, ornare sit amet mollis sit amet, aliquam nec nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin eu nibh lacus, sed suscipit erat. Quisque nulla nisl, pharetra eu euismod sed, interdum et eros."+
-
-				"Nullam dictum ullamcorper facilisis. Sed tempor, massa vel euismod iaculis, dolor enim posuere augue, vitae accumsan orci lectus mattis tortor. Nullam sodales rhoncus sodales. Mauris justo diam, tristique id vehicula non, iaculis quis sem. Maecenas risus augue, tincidunt vel ornare at, eleifend ut ipsum. Cras malesuada, nibh nec scelerisque feugiat, dui dui placerat mauris, ac dignissim odio quam nec tellus. Etiam fringilla nibh at felis tincidunt vel pretium velit aliquet."; 
-this._rating=1;
+	}
+	
+	public Comment(Integer id, String txt, Integer rating, Integer idU, Integer idR){
+		this.setInfo(id, txt, rating, idU, idR);
+	}
+	
+	@Override
+	public void clone(Model m) {
+		Comment c = (Comment) m;
+		this.setInfo(c.getId(), c.getTxt(), c.getRating(), c.getIdUser(), c.getIdUser());
 		
 	}
 	
-	public Date get_written() {
-		return _written;
-	}
+	public Integer getId() {return _id;}
+	public String getTxt() {return _txt;}
+	public Integer getRating() {return _rating;}
+	public Integer getIdUser() {return _idUser;}
+	public Integer getIdReceipe() {return _idReceipe;}
 
-	public void set_written(Date _written) {
-		this._written = _written;
+	public void setId(Integer _id) {this._id = _id;}
+	public void setTxt(String _txt) {this._txt = _txt;}
+	public void setRating(Integer _rating) {this._rating = _rating;}
+	public void setIdUser(Integer _idUser) {this._idUser = _idUser;}
+	public void setIdReceipe(Integer _idReceipe) {this._idReceipe = _idReceipe;}
+	
+	public void setInfo(Integer id, String txt, Integer rating, Integer idU, Integer idR) {
+		this._id = id;
+		this._txt = txt;
+		this._rating = rating;
+		this._idUser = idU;
+		this._idReceipe = idR;
 	}
 	
-	
-	public String get_txt() {
-		return _txt;
+	public String toString() {
+		String toS = "Comment id: " + this._id + "\n";
+		toS += "Txt: " + this._txt + "\n";
+		toS += "Rating " + this._rating + "\n"; 
+		toS += "idUsers: " + this._idUser + "\n";
+		toS += "idReceipes: " + this._idReceipe + "\n";
+		return toS;
 	}
-	public void set_txt(String _txt) {
-		this._txt = _txt;
-	}
-	public Integer get_rating() {
-		return _rating;
-	}
-	public void set_rating(Integer _rating) {
-		this._rating = _rating;
-	}
-	public User get_writer() {
-		return _writer;
-	}
-	public void set_writer(User _writer) {
-		this._writer = _writer;
-	}
-	
 }
