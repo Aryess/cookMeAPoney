@@ -45,46 +45,43 @@
 			        </f:facet>  
 			  
 			        <p:column headerText="Username"> 
-			        erp 
+			        	  #{user.login} 
 			        </p:column>  
 			  
-			        <p:column headerText="First Name"> 
-			        derp 
-			            <!--  #{user.FName}   -->
+			        <p:column headerText="First Name">  
+			              #{user.FName}  
 			        </p:column>  
 			  
 			        <p:column headerText="Admin" >  
-			           <p:selectBooleanCheckbox value="#{userTableBean.selectedUser.IsAdmin}" disabled="true"/>  
+			           <p:selectBooleanCheckbox value="#{user.isAdmin}" disabled="true"/>  
 		          </p:column>  
 			  
 			  		<p:column headerText="Delete">
 			  			<p:commandLink action="#{userTableBean.deleteUser}"/>
 			  		</p:column>
 			    </p:dataTable>  
-		      <h:form id="dialog" styleClass="span6" header="User Detail" widgetVar="userDialog" resizable="false"  
-		                showEffect="fade" hideEffect="explode" >  
+		       <h:form id="dialog" styleClass="span6" header="User Detail" widgetVar="userDialog" resizable="false"  
+		                showEffect="fade" hideEffect="explode" rendered="#{userTableBean.selectedUser != null}" >  
 		  
 		        <h:panelGrid id="display" columns="5" cellpadding="4">
-		         <!--    <h:outputText value="Username" />  
-		            <p:inputText value="#{userTableBean.selectedUser.getLogin}" />  
-		   -->
+		            <h:outputText value="Username" />  
+		            <p:inputText value="#{userTableBean.selectedUser.login}" />  
+		   
 		            <h:outputText value="Last Name" />  
-		            <p:inputText value="#{userTableBean.selectedUser.getLName}" />  
+		            <p:inputText value="#{userTableBean.selectedUser.lName}" />  
 		  
 		            <h:outputText value="First Name" />  
-		            <p:inputText value="#{userTableBean.selectedUser.getFName}" />  
+		            <p:inputText value="#{userTableBean.selectedUser.fName}" />  
 		            
 		            <h:outputText value="Email" />  
-		            <p:inputText value="#{userTableBean.selectedUser.getEmail}" />  
+		            <p:inputText value="#{userTableBean.selectedUser.email}" />  
 		            
 		            <h:outputText value="isAdmin" />  
-		            <p:selectBooleanCheckbox value="#{userTableBean.selectedUser.getIsAdmin}" />  
-		            
-		            
+		            <p:selectBooleanCheckbox value="#{userTableBean.selectedUser.isAdmin}" />  
 		  
 		        </h:panelGrid> 
 			</h:form>
-			
+			 
 	    </h:form>
 		  
 	</ui:define>
