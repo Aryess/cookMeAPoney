@@ -22,11 +22,7 @@ public class SearchCtrl {
 	private Receipes DAO = new Receipes();
 	
 	public SearchCtrl(){
-		this.rating = 0;
-		this.cookDuration = 180;
-		this.nbPpl = 0;
-		this.type = 0;
-		this.result = null;
+		this.resetSearch();
 	}
 	
 	
@@ -37,9 +33,15 @@ public class SearchCtrl {
 		System.out.println("Type: " + type);
 		
 		this.result = this.DAO.getReceipes(cookDuration, nbPpl, rating, type.toString());
-		//return this.DAO;
 	}
 	
+	public void resetSearch() {
+		this.rating = 0;
+		this.cookDuration = 180;
+		this.nbPpl = 0;
+		this.type = 0;
+		this.result = null;
+	}
 	
 	public Integer getRating() {return rating;}
 	public Integer getCookDuration() {return cookDuration;}
