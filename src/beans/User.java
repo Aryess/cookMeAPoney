@@ -3,11 +3,6 @@ package beans;
 import java.util.Date;
 
 import interfaces.Model;
-
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
-
 import dao.Users;
 
 

@@ -1,23 +1,21 @@
 package beans;
 
-import java.io.IOException;  
 import java.io.Serializable;  
 import java.util.ArrayList;  
-import java.util.Date;
 import java.util.List;  
-import java.util.UUID;  
-  
-import javax.faces.bean.ManagedBean;
-import javax.faces.context.FacesContext;  
-import javax.faces.event.ActionEvent;  
-import javax.servlet.ServletContext;  
+import javax.faces.bean.ManagedBean;  
    
 @ManagedBean
 public class ReceipeTableBean implements Serializable {  
       
     
   
-    private List<Receipe> receipes;  
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private List<Receipe> receipes;  
       
     private Receipe selectedReceipe;  
   
