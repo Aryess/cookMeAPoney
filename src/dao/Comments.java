@@ -53,7 +53,7 @@ public class Comments extends DAO {
 		System.out.println(c);
 		String query = "";
 		query += "UPDATE " + this.tableName + "\n";
-		query += "SET txt       = ,\n";
+		query += "SET txt       = ?,\n";
 		query += "rating        = ?,\n";
 		query += "idusers       = ?,\n";;
 		query += "idreceipes    = ?\n";
