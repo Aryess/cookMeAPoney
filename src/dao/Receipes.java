@@ -22,14 +22,28 @@ public class Receipes extends DAO {
 		int rs = 0;
 		String query = "";
 		query += "INSERT INTO " + this.tableName+ "( title, sumup, description, imageref, nbofperson, cooktype, cookexpertise, preparationduration) \n";
-		query += "VALUES ('" + r.getTitle() + "', '" + r.getSumup() + "', '"+ r.getDescription() + "', '";
-		query += r.getImageref() + "', '" + r.getNbofperson() + "', '" + r.getCooktype() + "', '";
-		query += r.getCookexpertise() + "', '" + r.getPreparationduration()  + "')";
+		query += "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		System.out.println(query);
 		try {
-			rs = DB.executeUpdate(query);
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, r.getTitle());
+			stmt.setString(2, r.getSumup());
+			stmt.setString(3, r.getDescription());
+			stmt.setString(4, r.getImageref());
+			stmt.setInt(5, r.getNbofperson());
+			stmt.setString(6, r.getCooktype());
+			stmt.setInt(7, r.getCookexpertise());
+			stmt.setInt(8, r.getPreparationduration());
+			rs = stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+		      try {
+		          if (stmt != null) { stmt.close(); }
+		       }
+		       catch (Exception e) {
+		    	   e.printStackTrace();
+		       }
 		}
 		System.out.println("Rs : " + rs);
 		return (rs == 1);
@@ -42,20 +56,36 @@ public class Receipes extends DAO {
 		System.out.println(r);
 		String query = "";
 		query += "UPDATE " + this.tableName + "\n";
-		query += "SET title            = '" + r.getTitle()               + "',\n";
-		query += "sumup                = '" + r.getSumup()               + "',\n";
-		query += "description          = '" + r.getDescription()         + "',\n";
-		query += "imageref             = '" + r.getImageref()            + "',\n";
-		query += "nbofperson           = '" + r.getNbofperson()          + "',\n";
-		query += "cooktype             = '" + r.getCooktype() 	         + "',\n";
-		query += "cookexpertise        = '" + r.getCookexpertise() 	     + "',\n";
-		query += "preparationduration  = '" + r.getPreparationduration() + "'\n";
+		query += "SET title            = ?,\n";
+		query += "sumup                = ?,\n";
+		query += "description          = ?,\n";
+		query += "imageref             = ?,\n";
+		query += "nbofperson           = ?,\n";
+		query += "cooktype             = ?,\n";
+		query += "cookexpertise        = ?,\n";
+		query += "preparationduration  = ?,\n";
 		query += "WHERE " + this.idField + " = '" + r.getId() + "'";
 		System.out.println(query);
 		try {
-			rs = DB.executeUpdate(query);
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, r.getTitle());
+			stmt.setString(2, r.getSumup());
+			stmt.setString(3, r.getDescription());
+			stmt.setString(4, r.getImageref());
+			stmt.setInt(5, r.getNbofperson());
+			stmt.setString(6, r.getCooktype());
+			stmt.setInt(7, r.getCookexpertise());
+			stmt.setInt(8, r.getPreparationduration());
+			rs = stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+		      try {
+		          if (stmt != null) { stmt.close(); }
+		       }
+		       catch (Exception e) {
+		    	   e.printStackTrace();
+		       }
 		}
 		System.out.println("Rs : " + rs);
 		return (rs == 1);
@@ -87,13 +117,18 @@ public class Receipes extends DAO {
 		HashMap<String, String> row = new HashMap<String, String>();
 		ArrayList<Receipe> result = new ArrayList<Receipe>();
 		int nbCol = 0;
-		String query = "SELECT * FROM " + this.tableName + " WHERE preparationduration = '" + duration + "' ";
-		query += "AND nbofperson = '" + nbPers + "' ";
-		query += "AND cookexpertise = '" + exp + "' ";
-		query += "AND cooktype = '" + type + "' ";
+		String query = "SELECT * FROM " + this.tableName + " WHERE preparationduration = ? ";
+		query += "AND nbofperson = ? ";
+		query += "AND cookexpertise = ? ";
+		query += "AND cooktype = ? ";
 		System.out.println(query);
 		try { 
-			rs = DB.executeQuery(query);
+			stmt = conn.prepareStatement(query);
+			stmt.setInt(2, nbPers);
+			stmt.setString(4, type);
+			stmt.setInt(3, exp);
+			stmt.setInt(1, duration);
+			rs = stmt.executeQuery();
 			resultMeta= rs.getMetaData();
 			nbCol = resultMeta.getColumnCount();
 			
@@ -109,6 +144,13 @@ public class Receipes extends DAO {
 		} catch (Exception e) {
 			System.out.println("Oooopps");
 			e.printStackTrace();
+		} finally {
+		      try {
+		          if (stmt != null) { stmt.close(); }
+		       }
+		       catch (Exception e) {
+		    	   e.printStackTrace();
+		       }
 		}
 		return result;
 	}

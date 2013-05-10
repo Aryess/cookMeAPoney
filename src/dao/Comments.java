@@ -22,12 +22,25 @@ public class Comments extends DAO {
 		int rs = 0;
 		String query = "";
 		query += "INSERT INTO " + this.tableName+ "( txt, rating, idusers, idreceipes) \n";
-		query += "VALUES ('" + c.getTxt() + "', '" + c.getRating() + "', '"+ c.getIdUser() + "', '" + c.getIdReceipe() + "')";
+		query += "VALUES (?, ?, ?, ?)";
+		
 		System.out.println(query);
 		try {
-			rs = DB.executeUpdate(query);
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, c.getTxt());
+			stmt.setInt(2, c.getRating());
+			stmt.setInt(3, c.getIdUser());
+			stmt.setInt(4, c.getIdReceipe());
+			rs = stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+		      try {
+		          if (stmt != null) { stmt.close(); }
+		       }
+		       catch (Exception e) {
+		    	   e.printStackTrace();
+		       }
 		}
 		System.out.println("Rs : " + rs);
 		return (rs == 1);
@@ -40,16 +53,28 @@ public class Comments extends DAO {
 		System.out.println(c);
 		String query = "";
 		query += "UPDATE " + this.tableName + "\n";
-		query += "SET txt       = '" + c.getTxt()       + "',\n";
-		query += "rating        = '" + c.getRating()    + "',\n";
-		query += "idusers       = '" + c.getIdUser()    + "',\n";
-		query += "idreceipes    = '" + c.getIdReceipe() + "'\n";
+		query += "SET txt       = ,\n";
+		query += "rating        = ?,\n";
+		query += "idusers       = ?,\n";;
+		query += "idreceipes    = ?\n";
 		query += "WHERE " + this.idField + " = '" + c.getId() + "'";
 		System.out.println(query);
 		try {
-			rs = DB.executeUpdate(query);
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, c.getTxt());
+			stmt.setInt(2, c.getRating());
+			stmt.setInt(3, c.getIdUser());
+			stmt.setInt(4, c.getIdReceipe());
+			rs = stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+		      try {
+		          if (stmt != null) { stmt.close(); }
+		       }
+		       catch (Exception e) {
+		    	   e.printStackTrace();
+		       }
 		}
 		System.out.println("Rs : " + rs);
 		return (rs == 1);

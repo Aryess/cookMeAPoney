@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -30,17 +31,32 @@ public class Users extends DAO {
 		User u = (User) item;
 		int rs = 0;
 		String query = "";
+		
 		query += "INSERT INTO " + this.tableName
 				+ "( firstname, lastname, age, email, login, pwd) \n";
-		query += "VALUES ('" + u.getFName() + "', '" + u.getLName() + "', '"
-				+ u.getAge() + "', '";
-		query += u.getEmail() + "', '" + u.getLogin() + "', '" + u.getPwd()
-				+ "')";
+		query += "VALUES ( ?, ?, ?, ? ,?)";
 		System.out.println(query);
+		
 		try {
-			rs = DB.executeUpdate(query);
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, u.getFName());
+			stmt.setString(2, u.getLName());
+			stmt.setInt(3, u.getAge());
+			stmt.setString(4, u.getEmail());
+			stmt.setString(5, u.getLogin());
+			stmt.setString(6, u.getPwd());
+			rs = stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+		      try {
+		          if (stmt != null) { stmt.close(); }
+		       }
+		       catch (Exception e) {
+		    	   e.printStackTrace();
+		       }
 		}
 		System.out.println("Rs : " + rs);
 		return (rs == 1);
@@ -53,18 +69,32 @@ public class Users extends DAO {
 		System.out.println(u);
 		String query = "";
 		query += "UPDATE " + this.tableName + "\n";
-		query += "SET firstname = '" + u.getFName() + "',\n";
-		query += "lastname  = '" + u.getLName() + "',\n";
-		query += "age       = '" + u.getAge() 	+ "',\n";
-		query += "email     = '" + u.getEmail() + "',\n";
-		query += "login     = '" + u.getLogin() + "',\n";
-		query += "pwd       = '" + u.getPwd() 	+ "'\n";
+		query += "SET firstname = ?,\n";
+		query += "lastname  = ?,\n";
+		query += "age       = ?,\n";
+		query += "email     = ?,\n";
+		query += "login     = ?,\n";
+		query += "pwd       = ?\n";
 		query += "WHERE " + this.idField + " = '" + u.getId() + "'";
 		System.out.println(query);
 		try {
-			rs = DB.executeUpdate(query);
+			stmt = conn.prepareStatement(query);
+			stmt.setString(1, u.getFName());
+			stmt.setString(2, u.getLName());
+			stmt.setInt(3, u.getAge());
+			stmt.setString(4, u.getEmail());
+			stmt.setString(5, u.getLogin());
+			stmt.setString(6, u.getPwd());
+			rs = stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+		      try {
+		          if (stmt != null) { stmt.close(); }
+		       }
+		       catch (Exception e) {
+		    	   e.printStackTrace();
+		       }
 		}
 		System.out.println("Rs : " + rs);
 		return (rs == 1);
@@ -121,6 +151,13 @@ public class Users extends DAO {
 		} catch (Exception e) {
 			System.out.println("Oooopps");
 			e.printStackTrace();
+		} finally {
+		      try {
+		          if (stmt != null) { stmt.close(); }
+		       }
+		       catch (Exception e) {
+		    	   e.printStackTrace();
+		       }
 		}
 		
 		if(row.get("idusers") == null) {

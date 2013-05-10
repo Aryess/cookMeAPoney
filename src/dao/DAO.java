@@ -3,6 +3,7 @@ package dao;
 import interfaces.Model;
 
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ public abstract class DAO{
 	protected String idField;
 	protected java.sql.Connection conn;
 	protected java.sql.Statement DB;
+	PreparedStatement stmt;
 	
 	public DAO() {
 		try {
