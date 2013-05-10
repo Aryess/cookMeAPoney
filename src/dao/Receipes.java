@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import beans.Receipe;
-import beans.Session;
-import beans.User;
 import interfaces.Model;
 
 public class Receipes extends DAO {

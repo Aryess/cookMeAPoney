@@ -5,9 +5,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import javax.faces.bean.ManagedProperty;
-
-import beans.Session;
 import beans.User;
 import interfaces.Model;
 
