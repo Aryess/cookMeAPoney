@@ -43,7 +43,7 @@ public class Comments extends DAO {
 		query += "SET txt       = '" + c.getTxt()       + "',\n";
 		query += "rating        = '" + c.getRating()    + "',\n";
 		query += "idusers       = '" + c.getIdUser()    + "',\n";
-		query += "idreceipes    = '" + c.getIdReceipe() + "',\n";
+		query += "idreceipes    = '" + c.getIdReceipe() + "'\n";
 		query += "WHERE " + this.idField + " = '" + c.getId() + "'";
 		System.out.println(query);
 		try {

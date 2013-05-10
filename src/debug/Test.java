@@ -4,8 +4,10 @@ import interfaces.Model;
 
 import java.util.ArrayList;
 
+import dao.Comments;
 import dao.Receipes;
 import dao.Users;
+import beans.Comment;
 import beans.Receipe;
 import beans.User;
 
@@ -16,9 +18,9 @@ public class Test {
 	 */
 	public static void main(String[] args) {
 		//int id, String title, String sumup, String desc, String imgRef, Integer nbPers, String cookType, Integer cookExp, Integer duration
-		Receipes Dao = new Receipes();
-		ArrayList<Receipe> receipes;
-		Receipe i = new Receipe(0, "Carpacio de banane", "Bah... Cest un carpacio quoi, mais avec des bananes", "lorem ipsum & co", "cookpony", 6, "Dessert", 2, 20);
+		Comments Dao = new Comments();
+		ArrayList<Comment> comments;
+		Comment i = new Comment(0, "Test comment", 4, 1, 1);
 		
 		Dao.create(i);
 		
@@ -26,7 +28,7 @@ public class Test {
 		i = Dao.fromRow(Dao.getLast());
 		System.out.println(i);
 		System.out.println("#######");
-		i.setCooktype("WTF BBQ");
+		i.setRating(2);
 		Dao.update(i);
 		i = Dao.fromRow(Dao.getLast());
 		System.out.println(i);
@@ -34,11 +36,11 @@ public class Test {
 		
 		
 		
-		receipes = Dao.getReceipes(180, 5, 3, "Salad");	
+		comments = Dao.getCommentsByReceipe(1);	
 		Dao.delete(i);
 		//users = Dao.getItems();
 		//*
-		for(Model item : receipes) {
+		for(Model item : comments) {
 			System.out.println(item);
 		}
 		//*/
