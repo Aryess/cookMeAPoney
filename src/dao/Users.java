@@ -34,7 +34,7 @@ public class Users extends DAO {
 		
 		query += "INSERT INTO " + this.tableName
 				+ "( firstname, lastname, age, email, login, pwd) \n";
-		query += "VALUES ( ?, ?, ?, ? ,?)";
+		query += "VALUES ( ?, ?, ?, ?, ?, ?)";
 		System.out.println(query);
 		
 		try {

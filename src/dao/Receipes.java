@@ -63,7 +63,7 @@ public class Receipes extends DAO {
 		query += "nbofperson           = ?,\n";
 		query += "cooktype             = ?,\n";
 		query += "cookexpertise        = ?,\n";
-		query += "preparationduration  = ?,\n";
+		query += "preparationduration  = ?\n";
 		query += "WHERE " + this.idField + " = '" + r.getId() + "'";
 		System.out.println(query);
 		try {
