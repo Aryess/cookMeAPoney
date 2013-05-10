@@ -18,7 +18,7 @@ public class UserDataModel extends ListDataModel<User> implements SelectableData
 	        List<User> users = (List<User>) getWrappedData();  
 	          
 	        for(User user : users) {  
-	            if(user.getLogin().equals(rowKey))  
+	            if(user.getId() == new Integer(rowKey))  
 	                return user;  
 	        }  
 	          
@@ -27,6 +27,6 @@ public class UserDataModel extends ListDataModel<User> implements SelectableData
 	  
 	    @Override  
 	    public Object getRowKey(User user) {  
-	        return user.getLogin();  
+	        return user.getId();  
 	    }  
 }

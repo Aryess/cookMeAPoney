@@ -18,17 +18,24 @@ public class ReceipeTableBean implements Serializable {
 	private List<Receipe> receipes;  
       
     private Receipe selectedReceipe;  
-  
+	
+    private ReceipeDataModel mediumReceipesModel;
+	
     public ReceipeTableBean() {  
         receipes = new ArrayList<Receipe>();  
           
-        populateRandomReceipes(receipes, 50);  
+        populateRandomReceipes(receipes, 50); 
+        mediumReceipesModel = new ReceipeDataModel(receipes);
     }  
       
     public Receipe getSelectedReceipe() {  
         return selectedReceipe;  
     }  
   
+	public ReceipeDataModel getMediumReceipesModel() {
+		return mediumReceipesModel;
+	}
+
     public void setSelectedReceipe(Receipe selectedReceipe) {  
         this.selectedReceipe = selectedReceipe;  
     }  

@@ -20,74 +20,79 @@
 	<ui:define name="header">
 
 		<h2 class="text-left inline rcp">
-			<a href="../../menu.jsf " class="part">
-		Receipe Management</a>
+			<a href="../../menu.jsf " class="part"> Receipe Management</a>
 		</h2>
 	</ui:define>
 	<ui:define name="login">
-			<!--  We override the template one to get rid of the login part -->
+		<!--  We override the template one to get rid of the login part -->
 	</ui:define>
-	
+
 	<ui:define name="body">
-		<h:form id="form" >  
-			  
-			    <p:growl id="growl" showDetail="true"/>  
-			  
-			    <p:dataTable id="receipes"  styleClass="span6" var="receipe" value="#{receipeTableBean.mediumReceipesModel}" paginator="true" rows="10"  
-			                 selection="#{receipeTableBean.selectedReceipe}" selectionMode="single">  
-			  
-			        <p:ajax event="rowSelect" listener="#{receipeTableBean.onRowSelect}"   
-			                    update=":form:dialog :form:growl" oncomplete="receipeDialog.show()" />  
-			        <p:ajax event="rowUnselect" listener="#{receipeTableBean.onRowUnselect}" update=":form:growl"/>  
-			  
-			        <f:facet name="header">  
+		<h:form id="form">
+
+			<p:growl id="growl" showDetail="true" />
+
+			<p:dataTable id="receipes" styleClass="span6" var="receipe"
+				value="#{receipeTableBean.mediumReceipesModel}" paginator="true"
+				rows="10" selection="#{receipeTableBean.selectedReceipe}"
+				selectionMode="single">
+
+				<p:ajax event="rowSelect" listener="#{receipeTableBean.onRowSelect}"
+					update=":form:dialog :form:growl" oncomplete="receipeDialog.show()" />
+				<p:ajax event="rowUnselect"
+					listener="#{receipeTableBean.onRowUnselect}" update=":form:growl" />
+
+				<f:facet name="header">  
 			            Select an receipe Pony ! 
-			        </f:facet>  
-			  
-			        <p:column headerText="Receipename"> 
-			        erp 
-			        </p:column>  
-			  
-			        <p:column headerText="First Name"> 
-			        derp 
-			            <!--  #{receipe.FName}   -->
-			        </p:column>  
-			  
-			        <p:column headerText="Admin" >  
-			           <p:selectBooleanCheckbox value="#{receipe.IsAdmin}" disabled="true"/>  
-		          </p:column>  
-			  
-			  		<p:column headerText="Delete">
-			  			<p:commandLink action="#{receipeTableBean.deleteReceipe}"/>
-			  		</p:column>
-			    </p:dataTable>  
-		      <h:form id="dialog" styleClass="span6" header="Receipe Detail" widgetVar="receipeDialog" resizable="false"  
-		                showEffect="fade" hideEffect="explode" rendered="#{receipeTableBean.selectedReceipe != null} ">  
-		  
-		          	<div>
-			            <h:outputText value="Receipename" />  
-			            <p:inputText value="#{receipeTableBean.selectedReceipe.getLogin}" />  
-		  			</div>
-		  		 	<div>	
-		            <h:outputText value="Last Name" />  
-		            <p:inputText value="#{receipeTableBean.selectedReceipe.getLName}" />  
-	  			 	</div>
-	  			 	<div>
-		            <h:outputText value="First Name" />  
-		            <p:inputText value="#{receipeTableBean.selectedReceipe.getFName}" />  
-		           	</div>
-		           	<div>  
-		            <h:outputText value="Email" />  
-		            <p:inputText value="#{receipeTableBean.selectedReceipe.getEmail}" />  
-		           	</div>
-		           	<div>  
-		            <h:outputText value="isAdmin" />  
-		            <p:selectBooleanCheckbox value="#{receipeTableBean.selectedReceipe.getIsAdmin}" />  
-		            </div>
-		            
-		  
+			        </f:facet>
+
+				<p:column headerText="Receipe Title"> 
+			         #{receipe.title}
+		        </p:column>
+
+				<p:column headerText="Delete">
+					<p:commandLink action="#{receipeTableBean.deleteReceipe}" />
+				</p:column>
+			</p:dataTable>
+			<h:form id="dialog" styleClass="span6" header="Receipe Detail"
+				widgetVar="receipeDialog" resizable="false" showEffect="fade"
+				hideEffect="explode"
+				>
+
+				<div>
+					<h:outputText value="Receipename" />
+					<p:inputText value="#{receipeTableBean.selectedReceipe.Title}" />
+				</div>
+				<div>
+					<h:outputText value="Resume" />
+					<p:inputTextarea value="#{receipeTableBean.selectedReceipe.sumup}" />
+				</div>
+				<div>
+					<h:outputText value="Time to spend: " /> 
+      				<p:inputMask value="#{receipeTableBean.selectedReceipe.cookDuration}" mask="99:99"/> 
+				</div>
+				<div>
+					<h:outputText id="output" value="#{receipeTableBean.selectedReceipe.nbPpl} people" />  
+			        <h:inputHidden id="txt2" value="#{sreceipeTableBean.selectedReceipe.nbPpl}" />
+			        <p:slider for="txt2" display="output" style="width:200px" maxValue ="10" displayTemplate="{value}"/>  
+		    	</div>
+				<div>
+					<h:outputText value="Cook Type" />
+					 <p:selectOneMenu value="#{receipeTableBean.selectedReceipe.cooktype}">  
+				            <f:selectItem itemLabel="Magic !" itemValue="" />  
+				            <f:selectItem itemLabel="Meal" itemValue="1" />  
+				            <f:selectItem itemLabel="Fish" itemValue="2" />  
+				            <f:selectItem itemLabel="Dessert" itemValue="3" /> 
+			        </p:selectOneMenu>
+		        </div>
+				<div>
+					<h:outputText value="Cook Expertise" />
+					<p:rating
+						value="#{receipeTableBean.selectedReceipe.cookexpertise}" />
+				</div>
+
 			</h:form>
-		
+		</h:form>
 	</ui:define>
 
 </ui:composition>

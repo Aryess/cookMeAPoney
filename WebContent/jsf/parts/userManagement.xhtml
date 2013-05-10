@@ -62,7 +62,6 @@
 			    </p:dataTable>  
 		       <h:form id="dialog" styleClass="span6 offset4 " header="User Detail" widgetVar="userDialog" resizable="false" >  
 		  			<div class="span4 offset4 ">
-		        <!--  <h:panelGrid id="display" columns="5" cellpadding="4">  -->
 		         		<div>
 		       	            <h:outputText value="Username" />  
 				            <p:inputText value="#{userTableBean.selectedUser.login}" />  
@@ -88,8 +87,7 @@
 			            <p:selectBooleanCheckbox value="#{userTableBean.selectedUser.isAdmin}" />  
 		   				</div>
 		   			</div>
-		   		<!--  </h:panelGrid>  -->
-			</h:form>
+		   	</h:form>
 			 
 	    </h:form>
 		  
