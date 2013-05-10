@@ -36,6 +36,7 @@ public class UserTableBean {
 	}
 
 	public User getSelectedUser() {
+		System.err.println(selectedUser._fName);
 		return selectedUser;
 	}
 
