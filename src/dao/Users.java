@@ -101,23 +101,15 @@ public class Users extends DAO {
 	}
 
 	public User getItem(int userId) {
-		HashMap<String, String> dataSet = this.read(userId);
-		int id = Integer.parseInt(dataSet.get("idusers"));
-		int age = Integer.parseInt(dataSet.get("age"));
-		for(String col : dataSet.keySet())
-			System.out.println(col + " " + dataSet.get(col));
-		return new User(id, dataSet.get("login"), dataSet.get("pwd"), dataSet.get("firstname"), dataSet.get("lastname"), age, dataSet.get("email"));
+		return this.fromRow(this.read(userId));
 	}
 
 	public ArrayList<Model> getItems() {
 		ArrayList<Model> users = new ArrayList<Model>();
 		ArrayList<HashMap<String, String>> ds = this.read();
-		int id, age, nbRow = ds.size();
+		int nbRow = ds.size();
 		for(int i = 0; i < nbRow; i++) {
-			HashMap<String, String> row = ds.get(i);
-			id = Integer.parseInt(row.get("idusers"));
-			age = Integer.parseInt(row.get("age"));
-			users.add(new User(id, row.get("login"), row.get("pwd"), row.get("firstname"), row.get("lastname"), age, row.get("email")));
+			users.add(this.fromRow(ds.get(i)));
 		}
 		
 		return users;
@@ -163,9 +155,12 @@ public class Users extends DAO {
 		if(row.get("idusers") == null) {
 			return null;
 		}
-		int id, age;
-		id = Integer.parseInt(row.get("idusers"));
-		age = Integer.parseInt(row.get("age"));
+		return this.fromRow(row);
+	}
+
+	public User fromRow(HashMap<String, String> row) {
+		int id = Integer.parseInt(row.get("idusers"));
+		int age = Integer.parseInt(row.get("age"));
 		return new User(id, row.get("login"), row.get("pwd"), row.get("firstname"), row.get("lastname"), age, row.get("email"));
 	}
 	
