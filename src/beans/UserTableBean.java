@@ -61,7 +61,5 @@ public class UserTableBean {
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 	
-	public void deleteUser(){
-		
-	}
+	
 }

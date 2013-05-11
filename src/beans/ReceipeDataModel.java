@@ -18,7 +18,7 @@ public class ReceipeDataModel extends ListDataModel<Receipe> implements Selectab
 	        List<Receipe> receipes = (List<Receipe>) getWrappedData();  
 	          
 	        for(Receipe receipe : receipes) {  
-	            if(receipe.getId().equals(rowKey))  
+	            if(receipe.getId().toString().equals(rowKey))  
 	                return receipe;  
 	        }  
 	          
