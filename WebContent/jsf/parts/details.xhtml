@@ -80,13 +80,20 @@
 				<p:panelGrid>
 					<p:row>
 						<p:column>
-							<p:inputTextarea rows="6" cols="33" /> 
+							<p:inputTextarea rows="6" cols="33" value="#{comment.txt}"/> 
 						</p:column>
 						<p:column>
 							<p:rating value="#{comment.rating}" />
 						</p:column>
 					</p:row>
 				</p:panelGrid>
+				<p:commandButton value="Save" actionListener="#{comment.create}">
+					<p:ajax action="#{comment.setIdUser}" value="#{user.id}"/>
+					<p:ajax action="#{comment.setIdReceipe}" value="#{receipe.id}"/>
+				</p:commandButton>
+				<p:commandButton value="Save" actionListener="#{comment.delete}" rendered="#{loginCtrl.user.isAdmin}">
+				</p:commandButton>
+				
 			</h:form>
 		</div>
 	</ui:define>

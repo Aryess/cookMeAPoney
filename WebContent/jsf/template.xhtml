@@ -21,15 +21,15 @@
 				</h2>
 			</ui:insert>
 
-			<h:outputText value="Panel1" rendered="#{loginCtrl.user == null}" />
-			<h:outputText value="Panel2" rendered="#{loginCtrl.user != null}" />
-			<ui:insert name="login">
+		<ui:insert name="login">
 				<!-- <h:panelGroup layout="block" rendered="#{loginCtrl.user == null}"
 					styleClass="inline" id="login" /> -->
 				<div class="inline" id="login">
 					<h4>
-						<a href="#">Login !</a>
+						<h:link action="#" rendered="#{loginCtrl.user == null}">Login !</h:link>
+						<h:outputText value="W-hell-come #{loginCtrl.user.login}" rendered="#{loginCtrl.user != null}"/>
 					</h4>
+					<h:outputText value="Last connection #{loginCtrl.user.lastConnection} for #{loginCtrl.user.lastDC}" rendered="#{loginCtrl.user != null}"/>
 					<h:form rendered="#{loginCtrl.user != null}">
 						<h:commandLink action="#{loginCtrl.signout}">
 							Se deconnecter

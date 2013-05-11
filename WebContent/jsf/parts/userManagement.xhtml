@@ -25,7 +25,10 @@
 		</h2>
 	</ui:define>
 	<ui:define name="login">
-			<!--  We override the template one to get rid of the login part -->
+			<!--	  We override the template one to get rid of the login partbut we have to repeat the content code below-->
+		<h:outputText value="W-hell-come #{loginCtrl.user.login}" rendered="#{loginCtrl.user != null}"/>
+		<h:outputText value="#{loginCtrl.totalCo} connected users" rendered="#{loginCtrl.user != null}"/>
+	
 	</ui:define>
 	
 	<ui:define name="body">
@@ -58,8 +61,8 @@
 			  
 			  		<p:column headerText="Delete">
 			  			<p:commandButton action="#{user.delete}" value="X" styleClass="btn-danger">
-			  			<!-- 	<p:ajax event="click"    
-			                    update=":form:users "/> -->
+			  				<p:ajax event="click"    
+			                    update=":form:users" action="#{userTableBean.updateModel}" render=":form:users"/>
 			  			</p:commandButton>
 			  		</p:column>
 			    </p:dataTable>
@@ -87,7 +90,11 @@
 						</h:panelGrid>
 		   			</div>
 		   			<div class="span2">
-						<p:commandButton actionListener="#{user.create}" value="New user" styleClass="btn btn-success" ajax="true"/>
+						<p:commandButton actionListener="#{user.create}" value="New user" styleClass="btn btn-success" ajax="true">
+							<p:ajax event="click"    
+			                    update=":form:users" action="#{userTableBean.updateModel}" render=":form:users"/>
+			  			
+						</p:commandButton>
 						<p:commandButton actionListener="#{userTableBean.selectedUser.update}" value="Save user" styleClass="btn btn-info" ajax="true"/>
 			    	</div>
 		   	</h:form>

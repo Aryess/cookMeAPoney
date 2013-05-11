@@ -60,6 +60,8 @@ public class UserTableBean {
 
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
-	
+	public void updateModel(){
+		mediumUsersModel = new UserDataModel(DAO.getUsers());
+	}
 	
 }
