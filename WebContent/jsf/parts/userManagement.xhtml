@@ -57,11 +57,13 @@
 		          </p:column>  
 			  
 			  		<p:column headerText="Delete">
-			  			<p:commandButton action="#{user.delete}" value="Delete"/>
+			  			<p:commandButton action="#{user.delete}" value="X" styleClass="btn-danger"/>
 			  		</p:column>
-			    </p:dataTable>  
+			    </p:dataTable>
+			   
+			      
 		       <h:form id="dialog" styleClass="span6 offset4 " header="User Detail"  resizable="false" >  
-		  			<div class="span4 offset4 ">
+		  			<div class="span4 offset1 ">
 		         		<h:panelGrid id="display" columns="2" cellpadding="4">
 
 							<h:outputText value="Username" />
@@ -81,11 +83,13 @@
 								value="#{userTableBean.selectedUser.isAdmin}" />
 						</h:panelGrid>
 		   			</div>
+		   			<div class="span2">
+						<p:commandButton actionListener="#{user.create}" value="New user" styleClass="btn btn-success" ajax="true"/>
+						<p:commandButton actionListener="#{user.update}" value="Save user" styleClass="btn btn-info" ajax="true"/>
+			    	</div>
 		   	</h:form>
 		   	
-		    <p:commandButton actionListener="#{user.create}" value="New user" ajax="true"/>
-			<p:commandButton actionListener="#{user.save}" value="Save user" ajax="true"/>
-	    </h:form>
+		   </h:form>
 		  
 	</ui:define>
 

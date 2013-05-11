@@ -38,12 +38,13 @@
 				selectionMode="single">
 
 				<p:ajax event="rowSelect" listener="#{receipeTableBean.onRowSelect}"
-					update=":form:dialog :form:growl" oncomplete="receipeDialog.show()" />
+					update=":form:dialog:display :form:growl"
+					 />
 				<p:ajax event="rowUnselect"
 					listener="#{receipeTableBean.onRowUnselect}" update=":form:growl" />
 
 				<f:facet name="header">  
-			            Select an receipe Pony ! 
+			            Select a receipe Pony ! 
 			        </f:facet>
 
 				<p:column headerText="Receipe Title"> 
@@ -51,45 +52,49 @@
 		        </p:column>
 
 				<p:column headerText="Delete">
-					<p:commandLink action="#{receipe.delete}" />
+					<p:commandButton actionListener="#{receipe.delete}" styleClass="btn-danger" value="X" ajax="true"/>
 				</p:column>
 			</p:dataTable>
-			<h:form id="dialog" styleClass="span6" header="Receipe Detail"
-				widgetVar="receipeDialog" resizable="false" showEffect="fade"
-				hideEffect="explode"
-				>
-				<div class="span3 offset4 ">
-					<div>
-						<h:outputText value="Receipename" />
-						<p:inputText value="#{receipeTableBean.selectedReceipe.Title}" />
-					</div>
-					<div>
-						<h:outputText value="Resume" />
+			<h:form id="dialog" styleClass="span6 offset4 "
+				header="Receipe Detail" resizable="false">
+				<div class="span4 offset1 ">
+
+					<h:panelGrid id="display" columns="1" cellpadding="4">
+						<h:outputText value="Receipe Name" />
+						<p:inputText value="#{receipeTableBean.selectedReceipe.title}" />
+
+						<h:outputText value="Summup" />
 						<p:inputTextarea value="#{receipeTableBean.selectedReceipe.sumup}" />
-					</div>
-					<div>
-						<h:outputText value="Time to spend: " /> 
-	      				<p:inputMask value="#{receipeTableBean.selectedReceipe.cookDuration}" mask="99:99"/> 
-					</div>
-					<div>
-						<h:outputText id="output" value="#{receipeTableBean.selectedReceipe.nbPpl} people" />  
-				        <h:inputHidden id="txt2" value="#{receipeTableBean.selectedReceipe.nbPpl}" />
-				        <p:slider for="txt2" display="output" style="width:200px" maxValue ="10" displayTemplate="{value}"/>  
-			    	</div>
-					<div>
+
+						<h:outputText value="Time to loose " />
+						<p:inputMask
+							value="#{receipeTableBean.selectedReceipe.preparationduration}"
+							mask="99:99" />
+
+						<h:outputText id="output"
+							value="#{receipeTableBean.selectedReceipe.nbofperson} people" />
+						<h:inputHidden id="txt2"
+							value="#{receipeTableBean.selectedReceipe.nbofperson} people" />
+						<p:slider for="txt2" display="output" style="width:200px"
+							maxValue="10" displayTemplate="{value}" />
+
 						<h:outputText value="Cook Type" />
-						 <p:selectOneMenu value="#{receipeTableBean.selectedReceipe.cooktype}">  
-					            <f:selectItem itemLabel="Magic !" itemValue="" />  
-					            <f:selectItem itemLabel="Meal" itemValue="1" />  
-					            <f:selectItem itemLabel="Fish" itemValue="2" />  
-					            <f:selectItem itemLabel="Dessert" itemValue="3" /> 
-				        </p:selectOneMenu>
-			        </div>
-					<div>
+						<p:selectOneMenu
+							value="#{receipeTableBean.selectedReceipe.cooktype}">
+							<f:selectItem itemLabel="Magic !" itemValue="" />
+							<f:selectItem itemLabel="Meal" itemValue="1" />
+							<f:selectItem itemLabel="Fish" itemValue="2" />
+							<f:selectItem itemLabel="Dessert" itemValue="3" />
+						</p:selectOneMenu>
+
 						<h:outputText value="Cook Expertise" />
 						<p:rating
 							value="#{receipeTableBean.selectedReceipe.cookexpertise}" />
-					</div>
+					</h:panelGrid>
+				</div>
+				<div class="span2">
+					<p:commandButton styleClass="btn btn-success" value="New Receipe" ajax="true" actionListener="#{receipe.create}"/>
+					<p:commandButton styleClass="btn btn-info" value="Save Receipe" ajax="true" actionListener="#{receipe.update}"/>
 				</div>
 			</h:form>
 		</h:form>

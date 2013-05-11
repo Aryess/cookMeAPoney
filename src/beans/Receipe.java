@@ -32,8 +32,8 @@ public class Receipe extends Model{
 	
 
 	public Receipe() {
-		/*
 		super();
+		/*
 		this._title = "Derp";
 		this._description = "Erp Derp Poneyz";
 		this._imageref = "/cookMeAPoneyLocal/img/cookpony.png";
