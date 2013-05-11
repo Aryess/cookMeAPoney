@@ -17,6 +17,7 @@ public class User extends Model{
 	protected Boolean _isAdmin;
 	protected Date _lastConnection;
 	protected Integer _lastDC;
+	protected String _role;
 
  	
 	public User(int id, String login, String pwd, String fName, String lName, int age, String email) {
@@ -45,6 +46,7 @@ public class User extends Model{
 	public int getAge() {return _age;}
 	public String getEmail() {	return _email;}
 	public Boolean getIsAdmin(){ return _isAdmin;}
+	public String getRole() { return _role;}
 	public Date getLastconnection() {return _lastConnection;}
 	public Integer getLastDC() {return _lastDC;}
 
@@ -56,7 +58,11 @@ public class User extends Model{
 	public void setLName(String _lName) {this._lName = _lName;}
 	public void setAge(int _age) {this._age = _age;}
 	public void setEmail(String _email) {this._email = _email;}
-	public void setIsAdmin(Boolean _isAdmin){this._isAdmin = _isAdmin;}
+	public void setIsAdmin(Boolean _isAdmin){
+		this._isAdmin = _isAdmin; 
+		this.setRole(this._isAdmin? "admin" : "");
+	}
+	public void setRole(String role) {this._role = role;}
 	public void setLastConnection(Date _lastConnection) {this._lastConnection = _lastConnection;}
 	public void setLastDC(Integer _lastDC){this._lastDC = _lastDC;}
 	

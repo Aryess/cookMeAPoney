@@ -85,7 +85,7 @@
 		   			</div>
 		   			<div class="span2">
 						<p:commandButton actionListener="#{user.create}" value="New user" styleClass="btn btn-success" ajax="true"/>
-						<p:commandButton actionListener="#{user.update}" value="Save user" styleClass="btn btn-info" ajax="true"/>
+						<p:commandButton actionListener="#{userTableBean.selectedUser.update}" value="Save user" styleClass="btn btn-info" ajax="true"/>
 			    	</div>
 		   	</h:form>
 		   	

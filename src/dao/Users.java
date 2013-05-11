@@ -1,6 +1,5 @@
 package dao;
 
-import java.sql.PreparedStatement;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -74,7 +73,8 @@ public class Users extends DAO {
 		query += "age       = ?,\n";
 		query += "email     = ?,\n";
 		query += "login     = ?,\n";
-		query += "pwd       = ?\n";
+		query += "pwd       = ?,\n";
+		query += "role		= ? \n";
 		query += "WHERE " + this.idField + " = '" + u.getId() + "'";
 		System.out.println(query);
 		try {
@@ -85,6 +85,7 @@ public class Users extends DAO {
 			stmt.setString(4, u.getEmail());
 			stmt.setString(5, u.getLogin());
 			stmt.setString(6, u.getPwd());
+			stmt.setString(7, u.getRole());
 			rs = stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -161,7 +162,15 @@ public class Users extends DAO {
 	public User fromRow(HashMap<String, String> row) {
 		int id = Integer.parseInt(row.get("idusers"));
 		int age = Integer.parseInt(row.get("age"));
-		return new User(id, row.get("login"), row.get("pwd"), row.get("firstname"), row.get("lastname"), age, row.get("email"));
+		return new User(id, row.get("login"), row.get("pwd"), row.get("firstname"), row.get("lastname"), age, row.get("email"), (row.get("role").equals("admin")));
+	}
+	
+	public ArrayList<User> getUsers() {
+		ArrayList<User> result = new ArrayList<User>();
+		ArrayList<HashMap<String, String>> rs = this.read();
+		for(HashMap<String, String> row : rs)
+			result.add(this.fromRow(row));
+		return result;
 	}
 	
 	

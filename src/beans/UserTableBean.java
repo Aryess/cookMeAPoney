@@ -9,25 +9,24 @@ import javax.faces.context.FacesContext;
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
 
+import dao.Users;
+
 @ManagedBean
 public class UserTableBean {
 
 	
 
 	private List<User> usersSmall;
-
 	private User selectedUser;
-
 	private UserDataModel mediumUsersModel;
-
+	private Users DAO;
+	
 	public UserTableBean() {
 		selectedUser = new User();
-		
 		usersSmall = new ArrayList<User>();
-
 		populateRandomUsers(usersSmall, 5);
-
-		mediumUsersModel = new UserDataModel(usersSmall);
+		this.DAO = new Users();
+		mediumUsersModel = new UserDataModel(DAO.getUsers());
 	}
 
 	private void populateRandomUsers(List<User> list, int size) {

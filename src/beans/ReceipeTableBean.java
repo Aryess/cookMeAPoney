@@ -47,6 +47,7 @@ public class ReceipeTableBean implements Serializable {
     }  
     
     public void onRowSelect(SelectEvent event) {
+    	System.out.println((Receipe) event.getObject());
 		FacesMessage msg = new FacesMessage("Receipe Selected",
 				((Receipe) event.getObject()).getId().toString());
 
