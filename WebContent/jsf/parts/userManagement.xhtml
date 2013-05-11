@@ -60,10 +60,9 @@
 		          </p:column>  
 			  
 			  		<p:column headerText="Delete">
-			  			<p:commandButton action="#{user.delete}" value="X" styleClass="btn-danger">
-			  				<p:ajax event="click"    
-			                    update=":form:users" action="#{userTableBean.updateModel}" render=":form:users"/>
-			  			</p:commandButton>
+			  			<h:commandButton  value="X" styleClass="btn-danger">
+			  				<f:ajax  event="click" listener="#{userTableBean.updateModel}" render=":form:users"/>
+			  			</h:commandButton>
 			  		</p:column>
 			    </p:dataTable>
 			   
@@ -91,9 +90,7 @@
 		   			</div>
 		   			<div class="span2">
 						<p:commandButton actionListener="#{user.create}" value="New user" styleClass="btn btn-success" ajax="true">
-							<p:ajax event="click"    
-			                    update=":form:users" action="#{userTableBean.updateModel}" render=":form:users"/>
-			  			
+							<f:ajax  event="click" listener="#{userTableBean.updateModel}" render=":form:users"/>
 						</p:commandButton>
 						<p:commandButton actionListener="#{userTableBean.selectedUser.update}" value="Save user" styleClass="btn btn-info" ajax="true"/>
 			    	</div>

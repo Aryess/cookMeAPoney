@@ -35,7 +35,6 @@ public class UserTableBean {
 	}
 
 	public User getSelectedUser() {
-		System.err.println(selectedUser._fName);
 		return selectedUser;
 	}
 
@@ -61,6 +60,8 @@ public class UserTableBean {
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 	public void updateModel(){
+		System.out.println("UPDATEDONE");
+			
 		mediumUsersModel = new UserDataModel(DAO.getUsers());
 	}
 	
