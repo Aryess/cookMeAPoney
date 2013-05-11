@@ -2,7 +2,10 @@ package dao;
 
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 import beans.User;
@@ -160,9 +163,26 @@ public class Users extends DAO {
 	}
 
 	public User fromRow(HashMap<String, String> row) {
+		User u;
 		int id = Integer.parseInt(row.get("idusers"));
 		int age = Integer.parseInt(row.get("age"));
-		return new User(id, row.get("login"), row.get("pwd"), row.get("firstname"), row.get("lastname"), age, row.get("email"), (row.get("role").equals("admin")));
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date lastCo = null;
+		String lastDuration = row.get("lastconnectionduration");
+		try {
+			lastCo = formatter.parse(row.get("lasteconnectiondate"));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		u =  new User(id, row.get("login"), row.get("pwd"), row.get("firstname"), row.get("lastname"), age, row.get("email"), (row.get("role").equals("admin")));
+		u.setLastConnection(lastCo);
+		if(! lastDuration.isEmpty())
+			u.setLastDC(Integer.parseInt(lastDuration));
+		else
+			u.setLastDC(0);
+		System.out.println("FromRow: " + u);
+		return u;
 	}
 	
 	public ArrayList<User> getUsers() {

@@ -49,6 +49,7 @@ public class User extends Model{
 	public String getRole() { return _role;}
 	public Date getLastconnection() {return _lastConnection;}
 	public Integer getLastDC() {return _lastDC;}
+	public String getFormatedLastCo() { return this.getLastconnection().toString();}
 
 
 	public void setId(int _id) {this._id = _id;}
@@ -84,6 +85,8 @@ public class User extends Model{
 		toS += "age: " + this._age + "\n";
 		toS += "email: " + this._email + "\n";
 		toS += "isAdmin: " + this._isAdmin + "\n";
+		toS += "LastDc: " + this._lastConnection + "\n";
+		toS += "LastDur: " + this._lastDC + "\n";
 		return toS;
 	}
 	

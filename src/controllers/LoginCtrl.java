@@ -34,6 +34,7 @@ public class LoginCtrl{
 		} else {
 			System.out.println("Loggin failed for " + this.username + ":" + this.pwd);
 		}
+		System.out.println("Total co : " + totalCo);
 	}
 	
 	public void signout() {
