@@ -3,11 +3,11 @@ package beans;
 import interfaces.Model;
 
 public class Comment extends Model{
-	private Integer _id;
-	private String _txt;
-	private Integer _rating;
-	private Integer _idUser;
-	private Integer _idReceipe;
+	private Integer id;
+	private String txt;
+	private Integer rating;
+	private Integer idUser;
+	private Integer idReceipe;
 	
 	public Comment(){
 	}
@@ -23,32 +23,32 @@ public class Comment extends Model{
 		
 	}
 	
-	public Integer getId() {return _id;}
-	public String getTxt() {return _txt;}
-	public Integer getRating() {return _rating;}
-	public Integer getIdUser() {return _idUser;}
-	public Integer getIdReceipe() {return _idReceipe;}
+	public Integer getId() {return id;}
+	public String getTxt() {return txt;}
+	public Integer getRating() {return rating;}
+	public Integer getIdUser() {return idUser;}
+	public Integer getIdReceipe() {return idReceipe;}
 
-	public void setId(Integer _id) {this._id = _id;}
-	public void setTxt(String _txt) {this._txt = _txt;}
-	public void setRating(Integer _rating) {this._rating = _rating;}
-	public void setIdUser(Integer _idUser) {this._idUser = _idUser;}
-	public void setIdReceipe(Integer _idReceipe) {this._idReceipe = _idReceipe;}
+	public void setId(Integer id) {this.id = id;}
+	public void setTxt(String txt) {this.txt = txt;}
+	public void setRating(Integer rating) {this.rating = rating;}
+	public void setIdUser(Integer idUser) {this.idUser = idUser;}
+	public void setIdReceipe(Integer idReceipe) {this.idReceipe = idReceipe;}
 	
 	public void setInfo(Integer id, String txt, Integer rating, Integer idU, Integer idR) {
-		this._id = id;
-		this._txt = txt;
-		this._rating = rating;
-		this._idUser = idU;
-		this._idReceipe = idR;
+		this.id = id;
+		this.txt = txt;
+		this.rating = rating;
+		this.idUser = idU;
+		this.idReceipe = idR;
 	}
 	
 	public String toString() {
-		String toS = "Comment id: " + this._id + "\n";
-		toS += "Txt: " + this._txt + "\n";
-		toS += "Rating " + this._rating + "\n"; 
-		toS += "idUsers: " + this._idUser + "\n";
-		toS += "idReceipes: " + this._idReceipe + "\n";
+		String toS = "Comment id: " + this.id + "\n";
+		toS += "Txt: " + this.txt + "\n";
+		toS += "Rating " + this.rating + "\n"; 
+		toS += "idUsers: " + this.idUser + "\n";
+		toS += "idReceipes: " + this.idReceipe + "\n";
 		return toS;
 	}
 }

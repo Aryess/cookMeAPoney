@@ -57,7 +57,10 @@
 		          </p:column>  
 			  
 			  		<p:column headerText="Delete">
-			  			<p:commandButton action="#{user.delete}" value="X" styleClass="btn-danger"/>
+			  			<p:commandButton action="#{user.delete}" value="X" styleClass="btn-danger">
+			  			<!-- 	<p:ajax event="click"    
+			                    update=":form:users "/> -->
+			  			</p:commandButton>
 			  		</p:column>
 			    </p:dataTable>
 			   

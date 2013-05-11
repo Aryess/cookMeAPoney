@@ -33,35 +33,36 @@
 				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 				rowsPerPageTemplate="9,12,15">
 
-				<p:panelGrid header="#{receipe._title}" styleClass="text-center">
+				<p:panelGrid header="#{receipe.title}" styleClass="text-center">
 					<a href="details.jsf"> 
 					<f:facet name="header">
 							<p:row>
 								<p:column colspan="2">
-									<a href="details.jsf">
-										<h:outputText colspan="2" value="#{receipe._title}" />
-									</a>
+									<p:commandLink colspan="2" action="details?faces-redirect=true" value="#{receipe.title}">
+									 <f:setPropertyActionListener value="#{receipe}"   
+                            			target="#{receipeTableBean.selectedReceipe}" />
+									</p:commandLink>
 								</p:column>
 							</p:row>
 						</f:facet>
 						 <p:row>
 							<p:column>
 								<span class="icon-user" />
-								<h:outputText id="output" value="#{receipe._nbofperson}" />
+								<h:outputText id="output" value="#{receipe.nbofperson}" />
 							</p:column>
 							<p:column rowspan="3">
-								<img src="#{receipe._imageref}" style="width: 25%; height: 25%;" />
-								<h:outputText value="#{receipe._description}" />
+								<img src="#{receipe.imageref}" style="width: 25%; height: 25%;" />
+								<h:outputText value="#{receipe.description}" />
 							</p:column>
 						</p:row> <p:row>
 							<p:column>
 								<span class="icon-time" />
-								<h:outputText value="#{receipe._preparationduration}" />
+								<h:outputText value="#{receipe.preparationduration}" />
 							</p:column>
 						</p:row> <p:row>
 							<p:column>
 								<span class="icon-signal" />
-								<p:rating value="#{receipe._cookexpertise}" />
+								<p:rating value="#{receipe.cookexpertise}" disabled="true"/>
 							</p:column>
 						</p:row>
 					</a>

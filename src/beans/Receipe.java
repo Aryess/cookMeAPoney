@@ -1,5 +1,7 @@
 package beans;
 
+import java.util.ArrayList;
+
 import interfaces.Model;
 
 import dao.Receipes;
@@ -29,6 +31,7 @@ public class Receipe extends Model{
 	private String cooktype;
 	private Integer cookexpertise;
 	private Integer  preparationduration;
+	private ArrayList<Comment> comments;
 	
 
 	public Receipe() {
@@ -42,14 +45,17 @@ public class Receipe extends Model{
 		this._cookexpertise = 0;
 		this._preparationduration = 0000;
 		this._ingredients = new ArrayList<String>();
-		this._comments = new ArrayList<Comment>();
-		_comments.add(new Comment());
+		comments.add(new Comment());
 		//*/
+		this.comments = new ArrayList<Comment>();
 	}
 	
 	public Receipe(int id, String title, String sumup, String desc, String imgRef, Integer nbPers, String cookType, Integer cookExp, Integer duration) {
 		super();
 		this.setInfos(id, title, sumup, desc, imgRef, nbPers, cookType, cookExp, duration);
+		this.comments = new ArrayList<Comment>();
+		comments.add(new Comment(-1, "Lorem Ipsum version ultra courte ou pas en fait qui veut rien dire au final juste pour tesetr la largeur du champ mais c'est pas grave ça se verra pas en prod car on peut commenter la ligne et faire comme si de rien n'etait c'est super java vraiment, j'aime beaucoup 2e surtout jsf qui suxx avec son jquery aleatoire et son positionnement pourrave et que dire des erreurs qui ne parlent à personne ou celels qui ne s'afichent pas le mapping est tellement bien fait que si ça marche pas ça se voit que au test sans aucun message d'erreur j'aime jsf", 0, -1, id));
+		
 		this.setDao(new Receipes());
 	}
 
@@ -63,6 +69,7 @@ public class Receipe extends Model{
 	public String getCooktype() {return cooktype;}
 	public Integer getCookexpertise() {return cookexpertise;}
 	public Integer getPreparationduration() {return preparationduration;}
+	public ArrayList<Comment> getComments() {return comments;}
 
 	public void setId(Integer id) {this.id = id;}
 	public void setTitle(String title) {this.title = title;}
@@ -73,6 +80,7 @@ public class Receipe extends Model{
 	public void setCooktype(String cooktype) {this.cooktype = cooktype;}
 	public void setCookexpertise(Integer cookexpertise) {this.cookexpertise = cookexpertise;}
 	public void setPreparationduration(Integer preparationduration) {this.preparationduration = preparationduration;}
+	public void setComments(ArrayList<Comment> comments) {this.comments = comments;}
 	
 	
 	private void setInfos(int id, String title, String sumup, String desc, String imgRef, Integer nbPers, String cookType, Integer cookExp, Integer duration) {
