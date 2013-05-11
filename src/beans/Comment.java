@@ -7,6 +7,7 @@ public class Comment extends Model{
 	private String txt;
 	private Integer rating;
 	private Integer idUser;
+	private String author;
 	private Integer idReceipe;
 	
 	public Comment(){
@@ -28,12 +29,14 @@ public class Comment extends Model{
 	public Integer getRating() {return rating;}
 	public Integer getIdUser() {return idUser;}
 	public Integer getIdReceipe() {return idReceipe;}
+	public String getAuthor() {return author;}
 
 	public void setId(Integer id) {this.id = id;}
 	public void setTxt(String txt) {this.txt = txt;}
 	public void setRating(Integer rating) {this.rating = rating;}
 	public void setIdUser(Integer idUser) {this.idUser = idUser;}
 	public void setIdReceipe(Integer idReceipe) {this.idReceipe = idReceipe;}
+	public void setAuthor(String auth) {this.author = auth;}
 	
 	public void setInfo(Integer id, String txt, Integer rating, Integer idU, Integer idR) {
 		this.id = id;
