@@ -10,6 +10,7 @@ import dao.Users;
 @SessionScoped
 
 public class LoginCtrl{
+	public static Integer totalCo = 0;
 	protected User user;
 	protected String username;
 	protected String pwd;
@@ -22,18 +23,21 @@ public class LoginCtrl{
 	public User getUser() { return this.user; }
 	public String getUsername() { return this.username; }
 	public String getPwd() { return this.pwd; }
+	public Integer getTotalCo() { return LoginCtrl.totalCo;}
 	
 	public void signin() {
 		this.user = DAO.getUser(this.username, this.pwd);
 		
 		if(user != null) {
 			System.out.println( "Loged in as : " + this.user.getFName() + " " + this.user.getLName());
+			LoginCtrl.totalCo ++;
 		} else {
 			System.out.println("Loggin failed for " + this.username + ":" + this.pwd);
 		}
 	}
 	
 	public void signout() {
+		LoginCtrl.totalCo --;
 		this.user = null;
 		this.username = "";
 		this.pwd = "";
