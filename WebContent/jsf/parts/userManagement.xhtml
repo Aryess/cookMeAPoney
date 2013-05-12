@@ -20,7 +20,7 @@
 	<ui:define name="header">
 
 		<h2 class="text-left inline emr">
-			<a href="../../menu.jsf " class="part">
+			<a href="adminMenu.jsf " class="part">
 				User Management</a>
 		</h2>
 	</ui:define>
@@ -91,12 +91,14 @@
 						</h:panelGrid>
 		   			</div>
 		   			<div class="span2">
-						<p:commandButton value="New user" styleClass="btn btn-success" ajax="true">
+						<h:commandButton value="New user" styleClass="btn btn-success" >
 							<f:ajax  event="click" listener="#{userTableBean.updateModel}" render=":form:users"/>
 						    <f:ajax event="mouseup" render=":form:users"  listener="#{user.create}" />
-       
-						</p:commandButton>
-						<p:commandButton actionListener="#{userTableBean.selectedUser.update}" value="Save user" styleClass="btn btn-info" ajax="true"/>
+						</h:commandButton>
+						<h:commandButton value="Save user" styleClass="btn btn-info" >
+							<f:ajax  event="click" listener="#{userTableBean.updateModel}" render=":form:users"/>
+						    <f:ajax event="mouseup" render=":form:users"  listener="#{userTableBean.selectedUser.update}" />
+						</h:commandButton>
 			    	</div>
 		   	</h:form>
 		   	

@@ -26,7 +26,7 @@ public class UserTableBean {
 		usersSmall = new ArrayList<User>();
 		populateRandomUsers(usersSmall, 5);
 		this.DAO = new Users();
-		mediumUsersModel = new UserDataModel(usersSmall);//DAO.getUsers());
+		mediumUsersModel = new UserDataModel(DAO.getUsers());
 	}
 
 	private void populateRandomUsers(List<User> list, int size) {

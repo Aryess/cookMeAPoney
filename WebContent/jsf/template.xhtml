@@ -75,9 +75,9 @@
 	<div id="footer">
 		<ui:insert name="footer">
 			<div class="clear">CopyLeft 2013 Cool Pics Educations</div>
-			<!--  <h:commandLink action="#{User.isAdmin}"  rendered="#{!row.active}">
-                      <h:outputText value="Administrate"/>
-                  </h:commandLink> -->
+		<h:form>
+		 <h:commandLink action="parts/login.jsf"  value="Administrate" rendered="#{loginCtrl.user.isAdmin}"/>
+		</h:form>
 		</ui:insert>
 		<ui:insert name="js">
 			<script src="http://code.jquery.com/jquery.js"></script>

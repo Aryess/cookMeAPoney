@@ -85,6 +85,12 @@
 				<h:column classStyle="span4">
 					<p:rating value="#{comment.rating}" disabled="true" />
 				</h:column>
+				<h:column rendered="#{loginCtrl.user.isAdmin}">
+					<h:commandButton value="X" styleClass="btn btn-danger" >
+						<f:ajax action="#{comment.delete}" event="click" render=":commentsform:comments"/>
+						<f:ajax action="#{receipeTableBean.updateModel}" event="click" render=":commentsform:comments"/>
+					</h:commandButton>
+				</h:column>
 			</h:dataTable>
 			</h:form>
 			
@@ -107,14 +113,10 @@
 							<p:rating value="#{comment.rating}" />
 						</p:column>
 						<p:column classStyle="span2">
-							<h:commandButton value="Save" 
-								styleClass="btn btn-info">
+							<h:commandButton value="Save" styleClass="btn btn-info">
 								<f:ajax action="#{comment.setIdUser}" value="#{user.id}" />
 								<f:ajax action="#{comment.setIdReceipe}" value="#{receipe.id}" />
 								<f:ajax action="#{comment.create}" event="click" render=":commentsform:comments"/>
-							</h:commandButton>
-							<h:commandButton value="X" actionListener="#{comment.delete}"
-								styleClass="btn btn-danger" rendered="#{loginCtrl.user.isAdmin}">
 							</h:commandButton>
 						</p:column>
 					</p:row>

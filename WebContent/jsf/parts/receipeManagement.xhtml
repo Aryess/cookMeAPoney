@@ -20,7 +20,7 @@
 	<ui:define name="header">
 
 		<h2 class="text-left inline rcp">
-			<a href="../../menu.jsf " class="part"> Receipe Management</a>
+			<a href="adminMenu.jsf " class="part"> Receipe Management</a>
 		</h2>
 	</ui:define>
 	<ui:define name="login">
@@ -54,7 +54,10 @@
 		        </p:column>
 
 				<p:column headerText="Delete">
-					<p:commandButton actionListener="#{receipe.delete}" styleClass="btn-danger" value="X" ajax="true"/>
+					<h:commandButton  styleClass="btn btn-danger text-center" value="X" >
+						<f:ajax  event="click" listener="#{receipeTableBean.updateModel}" render=":form:receipes"/>
+		  				<f:ajax event="mouseup" render=":form:receipes"  listener="#{receipe.delete}" />
+					</h:commandButton>
 				</p:column>
 			</p:dataTable>
 			<h:form id="dialog" styleClass="span6 offset4 "
@@ -78,7 +81,7 @@
 						<h:inputHidden id="txt2"
 							value="#{receipeTableBean.selectedReceipe.nbofperson} people" />
 						<p:slider for="txt2" display="output" style="width:200px"
-							maxValue="10" displayTemplate="{value}" />
+							maxValue="10" value="#{receipeTableBean.selectedReceipe.nbofperson}" />
 
 						<h:outputText value="Cook Type" />
 						<p:selectOneMenu
@@ -96,8 +99,14 @@
 					</h:panelGrid>
 				</div>
 				<div class="span2">
-					<p:commandButton styleClass="btn btn-success" value="New Receipe" ajax="true" actionListener="#{receipe.create}"/>
-					<p:commandButton styleClass="btn btn-info" value="Save Receipe" ajax="true" actionListener="#{receipe.update}"/>
+					<h:commandButton styleClass="btn btn-success" value="New Receipe"  >
+						<f:ajax  event="click" listener="#{receipeTableBean.updateModel}" render=":form:receipes"/>
+		  				<f:ajax event="mouseup" render=":form:receipes"  listener="#{receipe.create}" />
+					</h:commandButton>
+					<h:commandButton styleClass="btn btn-info" value="Save Receipe">
+						<f:ajax  event="click" listener="#{receipeTableBean.updateModel}" render=":form:receipes"/>
+		  				<f:ajax event="mouseup" render=":form:receipes"  listener="#{receipe.update}" />
+					</h:commandButton>
 				</div>
 			</h:form>
 		</h:form>
