@@ -27,7 +27,7 @@
 		<!--	  We override the template one to get rid of the login partbut we have to repeat the content code below-->
 		<h:outputText value="W-hell-come #{loginCtrl.user.login}" rendered="#{loginCtrl.user != null}"/>
 		<h:outputText value="#{loginCtrl.totalCo} connected users" rendered="#{loginCtrl.user != null}"/>
-						
+		<h:outputText value="Last connection #{loginCtrl.user.formatedLastCo} for #{loginCtrl.user.lastDC} minutes" rendered="#{loginCtrl.user != null}/>			
 	</ui:define>
 	
 	<ui:define name="body">
