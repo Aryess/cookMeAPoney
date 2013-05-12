@@ -18,7 +18,7 @@ public class Bean {
     // Actions ------------------------------------------------------------------------------------
 
     public void submit() {
-    	System.out.println("test2");
+    	System.out.println("i1"+input1+"i2"+input2);
         String message = String.format("Submitted: input1=%s, input2=%s", input1, input2);
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(message));
     }
