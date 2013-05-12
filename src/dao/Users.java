@@ -68,7 +68,6 @@ public class Users extends DAO {
 	public Boolean update(Model item) {
 		User u = (User) item;
 		int rs = 0;
-		System.out.println(u);
 		String query = "";
 		query += "UPDATE " + this.tableName + "\n";
 		query += "SET firstname = ?,\n";
@@ -173,7 +172,6 @@ public class Users extends DAO {
 			lastCo = formatter.parse(row.get("lasteconnectiondate"));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
 		}
 		u =  new User(id, row.get("login"), row.get("pwd"), row.get("firstname"), row.get("lastname"), age, row.get("email"), (row.get("role").equals("admin")));
 		u.setLastConnection(lastCo);
@@ -181,7 +179,7 @@ public class Users extends DAO {
 			u.setLastDC(Integer.parseInt(lastDuration));
 		else
 			u.setLastDC(0);
-		System.out.println("FromRow: " + u);
+		//System.out.println("FromRow: " + u);
 		return u;
 	}
 	
