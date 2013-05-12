@@ -1,10 +1,12 @@
-package beans;
+package tableCtrl;
 
 import java.util.List;
 
 import javax.faces.model.ListDataModel;
 
 import org.primefaces.model.SelectableDataModel;
+
+import beans.Receipe;
 
 public class ReceipeDataModel extends ListDataModel<Receipe> implements SelectableDataModel<Receipe> {
 	 public ReceipeDataModel(List<Receipe> data) {  

@@ -1,4 +1,4 @@
-package beans;
+package tableCtrl;
 
 import java.io.Serializable;  
 import java.util.ArrayList;  
@@ -11,6 +11,9 @@ import javax.faces.context.FacesContext;
 
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
+
+import beans.Receipe;
+
 
 import dao.Receipes;
 import dao.Users;

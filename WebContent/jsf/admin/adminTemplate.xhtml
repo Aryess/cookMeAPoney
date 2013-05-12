@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core"
+	  xmlns:p="http://primefaces.org/ui" 
+   	  xmlns:jh="http://java.sun.com/jsf/html">
+	<jh:head>
+	    <title><ui:insert name="title">Default</ui:insert> - Cook Me a Poney</title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		<link href="../../css/bootstrap.min.css" rel="stylesheet" media="screen"/>
+		<link href="../../css/common.css" rel="stylesheet" media="screen"/>
+		<ui:insert name="customcss"></ui:insert>
+	</jh:head>
+
+	<jh:body>
+			<div id="navbar navbar-inverse navbar-fixed-top">
+				<div class="navbar-inner">
+					<ui:insert name="header">
+						<h2>501 NOT IMPLEMENTED</h2>
+						<h3>:(</h3>
+					</ui:insert>
+					
+					<ui:insert name="login">
+							<p class=" pull-right">
+								<jh:outputText value="W-hell-come #{loginCtrl.user.login}" rendered="#{loginCtrl.user != null}"/>
+								<jh:outputText value="#{loginCtrl.totalCo} connected users" rendered="#{loginCtrl.user != null}"/>
+							</p>
+				</ui:insert>
+				</div>
+			</div><!--  div header end -->
+			
+			<div id="content" class="clear">
+				<p:panel rendered="#{loginCtrl.user.isAdmin == true}">
+					<ui:insert name="body">
+						 <h1>501 NOT IMPLEMENTED (YET)</h1>
+						 <p class="text-right">
+						 	<img src="../../img/sadponey.png" alt="" ></img>
+						 </p>
+					</ui:insert>
+				</p:panel>
+				<p:panel rendered="#{loginCtrl.user.isAdmin == false or loginCtrl.user == null}">
+					 <h1>FORBIDDENBRU</h1>
+					 <p class="text-right">
+					 	<img src="../../img/ponycry.png" alt="" ></img>
+					 </p>
+				</p:panel>
+			</div>
+			<div id="footer" class="clear">
+				<ui:insert name="footer">
+				 	 <div>CopyLeft 2013 Cool Pics Educations</div> 
+			 	 	<h2 class="text-right inline"> <a href="menu.jsf">Cook Me ...</a></h2>
+					 <h3 class="pull-right inline"><a href="menu.jsf"><span class="red">A</span> <span class="orange">P</span><span class="yellow">o</span><span class="green">n</span><span class="blue">e</span><span class="violet">y</span> !</a></h3>
+				</ui:insert>
+  		 	<ui:insert name="customscripts"></ui:insert>
+			</div>
+	
+	</jh:body>
+
+</html>

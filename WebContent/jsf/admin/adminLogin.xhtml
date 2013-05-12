@@ -3,7 +3,7 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	template="partTemplate.xhtml">
+	template="/jsf/parts/partTemplate.xhtml">
 
 
 	<ui:define name="customcss">
@@ -20,7 +20,7 @@
 	<ui:define name="header">
 
 		<h2 class="text-left inline emr">
-			<a href="adminMenu.jsf " class="part">Administration</a>
+			<a href="../menu.jsf " class="part">Administration</a>
 		</h2>
 	</ui:define>
 	 <ui:define name="login">
@@ -32,7 +32,7 @@
 	
 	<ui:define name="body">
 		<div class="row-fluid ">
-			 <h:form rendered="#{loginCtrl.user == null && loginCtrl.user.isAdmin != true}" styleClass="span8 offset4"> 
+			 <h:form rendered="#{loginCtrl.user == null &amp;&amp; loginCtrl.user.isAdmin != true}" styleClass="span8 offset4"> 
 						<div id="login-content" >
 							<h4> Log urself to acces the admin Paneyl</h4>
 							<div>
@@ -49,6 +49,17 @@
 	
 		</div>
 		
+	</ui:define>
+	<ui:define name="customscripts">
+		<p:panel rendered="#{loginCtrl.user.isAdmin == true}">
+			<script type="text/javascript">
+				$(document).ready(function() {
+					window.location.replace("adminMenu.jsf");
+				
+				});
+			</script>
+			
+		</p:panel>
 	</ui:define>
 
 </ui:composition>

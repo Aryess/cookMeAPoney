@@ -1,4 +1,4 @@
-package beans;
+package tableCtrl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +8,8 @@ import javax.faces.context.FacesContext;
 
 import org.primefaces.event.SelectEvent;
 import org.primefaces.event.UnselectEvent;
+
+import beans.User;
 
 import dao.Users;
 
