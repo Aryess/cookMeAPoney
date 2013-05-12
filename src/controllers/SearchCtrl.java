@@ -18,7 +18,7 @@ public class SearchCtrl {
 	private Integer cookDuration;
 	private String maskDuration;
 	private Integer nbPpl;
-	private Integer type;
+	private String type;
 	private ArrayList<Receipe> result;
 	private Receipes DAO = new Receipes();
 	
@@ -42,21 +42,21 @@ public class SearchCtrl {
 		this.cookDuration = 180;
 		this.maskDuration = "";
 		this.nbPpl = 0;
-		this.type = 0;
+		this.type = "";
 		this.result = null;
 	}
 	
 	public Integer getRating() {return rating;}
 	public Integer getCookDuration() {return cookDuration;}
 	public Integer getNbPpl() {return nbPpl;}
-	public Integer getType() {return type;}
+	public String getType() {return type;}
 	public String getMaskDuration() {return maskDuration;}
 	public ArrayList<Receipe> getResult() {return result;}
 	
 	public void setRating(Integer rating) {this.rating = rating;}
 	public void setCookDuration(Integer cookDuration) {this.cookDuration = 180;}//cookDuration;}
 	public void setNbPpl(Integer nbPpl) {this.nbPpl = nbPpl;}
-	public void setType(Integer type) {this.type = type;}
+	public void setType(String type) {this.type = type;}
 	public void setMaskDuration(String mask) {
 		this.maskDuration = mask;
 		String[] time = this.maskDuration.split(":");
