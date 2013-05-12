@@ -71,8 +71,8 @@
 		
 	   <h5 class="offset2">Comments about <h:outputText value="#{receipeTableBean.selectedReceipe.title}"/></h5>
 		<div class="row-fluid">
-			<h:form>
-			<h:dataTable id="comment"
+			<h:form id="commentsform">
+			<h:dataTable id="comments"
 				value="#{receipeTableBean.selectedReceipe.comments}" var="comment"
 				styleClass="span8 offset2">
 				<h:column classStyle="span2">
@@ -111,7 +111,7 @@
 								styleClass="btn btn-info">
 								<f:ajax action="#{comment.setIdUser}" value="#{user.id}" />
 								<f:ajax action="#{comment.setIdReceipe}" value="#{receipe.id}" />
-								<f:ajax action="#{comment.create}" event="click" render="comment"/>
+								<f:ajax action="#{comment.create}" event="click" render=":commentsform:comments"/>
 							</h:commandButton>
 							<h:commandButton value="X" actionListener="#{comment.delete}"
 								styleClass="btn btn-danger" rendered="#{loginCtrl.user.isAdmin}">
