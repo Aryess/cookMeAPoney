@@ -4,18 +4,7 @@
 <h:head>
 </h:head>
 <h:body>
-    <h:form id="form">
-        Your Name: <h:inputText id="inputname" label="${msgs.prompt}" value="#{test.name}"/>
-        <br />
-        <h:commandButton  value="Display my name here, now!"  >
-            <f:ajax event="click" render="myName"  listener="#{test.doStuff}" />
-            <f:ajax event="mouseup" render="myName"  listener="#{test.sayHello}" />
-            
-        </h:commandButton>
-        <br />
-        <br />
-        <h:outputText id="myName" value="#{test.name}" />
-    </h:form>
+   
     
       <h:form id="form2">
             <h:panelGrid columns="3">
@@ -29,8 +18,7 @@
 
                 <h:panelGroup />
                  <h:commandButton value="Submit" >
-			      	<f:ajax event="click" listener="#{bean.submit}" />
-			        <f:ajax execute="@form" render="@form" />
+			        <f:ajax execute="@form" render="@form" event="click" listener="#{bean.submit}"/>
 			    </h:commandButton>
                 <h:messages id="messages" globalOnly="true" layout="table" />        
             </h:panelGrid>
