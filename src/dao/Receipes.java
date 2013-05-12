@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import beans.Receipe;
+import beans.User;
 import interfaces.Model;
 
 public class Receipes extends DAO {
@@ -168,6 +169,14 @@ public class Receipes extends DAO {
 		}
 		
 		return r;
+	}
+	
+	public ArrayList<Receipe> getReceipes() {
+		ArrayList<Receipe> result = new ArrayList<Receipe>();
+		ArrayList<HashMap<String, String>> rs = this.read();
+		for(HashMap<String, String> row : rs)
+			result.add(this.fromRow(row));
+		return result;
 	}
 	
 }
