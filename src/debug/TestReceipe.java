@@ -21,8 +21,13 @@ public class TestReceipe {
 		Receipes Dao = new Receipes();
 		ArrayList<Receipe> receipes;
 		Receipe i = new Receipe(0, "Carpacio de banane", "Bah... C'est un carpacio quoi, mais avec des bananes", "lorem ipsum & co", "cookpony", 6, "Dessert", 2, 20);
-		
-		Dao.create(i);
+		i = Dao.fromRow(Dao.getLast());
+		for(int j = 1; j<30; j++) {
+			i.setCookexpertise(j%4);
+			i.setNbofperson(j%10);
+			i.create();
+		}
+			
 		
 		System.out.println("-------");
 		i = Dao.fromRow(Dao.getLast());
