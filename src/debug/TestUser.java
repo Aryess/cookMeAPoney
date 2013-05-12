@@ -22,7 +22,10 @@ public class TestUser {
 		User i = new User(42, "aaaaaaaarLogin", "aPwd", "aName", "aForname", 24, "awesome@mail.adress");
 		
 		Dao.create(i);
-		
+		i.create();
+		i.create();
+		i.create();
+		i.create();
 		System.out.println("-------");
 		i = Dao.fromRow(Dao.getLast());
 		System.out.println(i);

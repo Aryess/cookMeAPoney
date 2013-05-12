@@ -11,10 +11,12 @@ import interfaces.Model;
 
 public class Receipes extends DAO {
 
-
+	protected Comments comDao;
+	
 	public Receipes() {
 		this.tableName = "receipes";
 		this.idField = "idreceipes";
+		this.comDao = new Comments();
 	}
 
 	@Override
@@ -164,6 +166,7 @@ public class Receipes extends DAO {
 			int exp = Integer.parseInt(row.get("cookexpertise"));
 			int duration = Integer.parseInt(row.get("preparationduration"));
 			r = new Receipe(id, row.get("title"), row.get("sumup"), row.get("description"), row.get("imageref"), nbPers, row.get("cooktype"), exp, duration);
+			r.setComments(this.comDao.getCommentsByReceipe(id));
 		} catch (Exception E) {
 			r = null;
 		}
