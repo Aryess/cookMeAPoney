@@ -68,20 +68,20 @@
 		         		<h:panelGrid id="display" columns="2" cellpadding="4">
 
 							<h:outputText value="Username" />
-							<p:inputText value="#{userTableBean.selectedUser.login}" />
+							<p:inputText value="#{userTableBean.selectedUser.login}" id="login" />
 						
 							<h:outputText value="Last Name" />
-							<p:inputText value="#{userTableBean.selectedUser.LName}" />
+							<p:inputText value="#{userTableBean.selectedUser.LName}" id="LName"/>
 						
 							<h:outputText value="First Name" />
-							<p:inputText value="#{userTableBean.selectedUser.FName}" />
+							<p:inputText value="#{userTableBean.selectedUser.FName}" id="FName" />
 						
 							<h:outputText value="Email" />
-							<p:inputText value="#{userTableBean.selectedUser.email}" />
+							<p:inputText value="#{userTableBean.selectedUser.email}" id="email"/>
 						
 							<h:outputText value="isAdmin" />
 							<p:selectBooleanCheckbox
-								value="#{userTableBean.selectedUser.isAdmin}" />
+								value="#{userTableBean.selectedUser.isAdmin}" id="isAdmin"/>
 						</h:panelGrid>
 		   			</div>
 		   			<div class="span2">

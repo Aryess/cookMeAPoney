@@ -61,26 +61,26 @@
 
 					<h:panelGrid id="display" columns="1" cellpadding="4">
 						<h:outputText value="Receipe Name" />
-						<p:inputText value="#{receipeTableBean.selectedReceipe.title}" />
+						<p:inputText value="#{receipeTableBean.selectedReceipe.title}" id="title" />
 
 						<h:outputText value="Summup" />
-						<p:inputTextarea value="#{receipeTableBean.selectedReceipe.sumup}" />
+						<p:inputTextarea value="#{receipeTableBean.selectedReceipe.sumup}" id="sumup"/>
 
 						<h:outputText value="Time to loose " />
 						<p:inputMask
 							value="#{receipeTableBean.selectedReceipe.preparationduration}"
-							mask="99:99" />
+							mask="99:99" id="preparationduration"/>
 
 						<h:outputText id="output"
 							value="#{receipeTableBean.selectedReceipe.nbofperson} people" />
 						<h:inputHidden id="txt2"
 							value="#{receipeTableBean.selectedReceipe.nbofperson}" />
 						<p:slider for="txt2" display="output" style="width:200px"
-							maxValue="10" value="#{receipeTableBean.selectedReceipe.nbofperson}" />
+							maxValue="10" value="#{receipeTableBean.selectedReceipe.nbofperson}" id="nbofperson"/>
 
 						<h:outputText value="Cook Type" />
 						<p:selectOneMenu
-							value="#{receipeTableBean.selectedReceipe.cooktype}">
+							value="#{receipeTableBean.selectedReceipe.cooktype}" id="cooktype">
 							<f:selectItem itemLabel="Magic !" itemValue="" />
 							<f:selectItem itemLabel="Salad" itemValue="Salad" />
 							<f:selectItem itemLabel="Meal" itemValue="Meal" />
@@ -90,7 +90,7 @@
 
 						<h:outputText value="Cook Expertise" />
 						<p:rating
-							value="#{receipeTableBean.selectedReceipe.cookexpertise}" />
+							value="#{receipeTableBean.selectedReceipe.cookexpertise}" id="cookexpertise"/>
 					</h:panelGrid>
 				</div>
 				<div class="span2">
