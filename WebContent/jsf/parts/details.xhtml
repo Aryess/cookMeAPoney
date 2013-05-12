@@ -1,6 +1,7 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="partTemplate.xhtml">
@@ -98,36 +99,39 @@
 		<!-- IF LOGGED ONLY-->
 		
 		<div class="row-fluid">
-	  			<h:outputText classStyle ="alert alert-warning span8 offset2" value="Connect to post a comment" rendered="#{loginCtrl.user == null}"/>
+	  		<c:if test="#{loginCtrl.user != null}">	
 			<h:form styleClass="span8 offset2"  rendered="#{loginCtrl.user != null}">
 				<h5 class="offset2">Write your own !</h5>
 				<p:panelGrid>
 					<p:row>
 						<p:column classStyle="span2">
 							<span class="icon-user" />
-							<h:outputText id="writer" value="#{loginCtrl.user.username}" />
+							<h:outputText id="writer" value="#{loginCtrl.username}" />
 						</p:column>
 						<p:column classStyle="span2">
-							<p:inputTextarea rows="6" cols="100" value="#{comment.txt}" />
+							<p:inputTextarea rows="6" cols="100" value="#{detailsCtrl.comment.txt}" />
 						</p:column>
 						<p:column classStyle="span2">
-							<p:rating value="#{comment.rating}" />
+							<p:rating value="#{detailsCtrl.comment.rating}" />
 						</p:column>
 						<p:column classStyle="span2">
 							<h:commandButton value="Save" styleClass="btn btn-info">
-								<f:ajax action="#{comment.setIdUser}" value="#{user.id}" />
-								<f:ajax action="#{comment.setIdReceipe}" value="#{receipe.id}" />
-								<f:ajax action="#{comment.create}" event="click" render=":commentsform:comments"/>
+								<f:ajax action="#{detailsCtrl.comment.setIdUser}" value="#{loginCtrl.user.id}" />
+								<f:ajax action="#{detailsCtrl.comment.setIdReceipe}" value="#{receipeTableBean.selectedReceipe.id}" />
+								<f:ajax action="#{detailsCtrl.comment.create}" event="click" render=":commentsform:comments"/>
 							</h:commandButton>
 						</p:column>
 					</p:row>
 				</p:panelGrid>
 			</h:form>
+			</c:if>
 			<h:form rendered="#{loginCtrl.user == null}">
 			 	
 				<div id="login-content" class="span4 offset2">
-					<h5 >Log urself to leave a comment</h5>
-			
+				<br />
+				<div class ="alert alert-warning">
+					<h5 >Log in to leave a comment</h5>
+				</div>
 					<div>
 						<h:inputText id="username" value="#{loginCtrl.username}"
 							required="true">

@@ -90,8 +90,7 @@
 						    <f:ajax event="mouseup" render=":form:users"  listener="#{userTableBean.createUser}" />
 						</h:commandButton>
 						<h:commandButton value="Save user" styleClass="btn btn-info" >
-							<f:ajax  event="click" listener="#{userTableBean.updateModel}" render=":form:users"/>
-						    <f:ajax event="mouseup" render=":form:users"  listener="#{userTableBean.saveUser}" />
+							<f:ajax execute="@form" render="@form" event="click" listener="#{userTableBean.updateModel}"/>
 						</h:commandButton>
 			    	</div>
 		   	</h:form>

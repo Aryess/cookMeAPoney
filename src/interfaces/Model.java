@@ -5,8 +5,9 @@ import dao.DAO;
 public abstract class Model {
 	protected DAO DAO;
 	
-	public Boolean create() {
-		return this.DAO.create(this);
+	public String create() {
+		System.out.println("Model: " + this);
+		return this.DAO.create(this).toString();
 	}
 	
 	public abstract void clone(Model m);

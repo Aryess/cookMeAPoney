@@ -36,6 +36,7 @@ public class Receipe extends Model{
 
 	public Receipe() {
 		super();
+		this.id = -1;
 		/*
 		this._title = "Derp";
 		this._description = "Erp Derp Poneyz";

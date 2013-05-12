@@ -76,8 +76,9 @@
 		<ui:insert name="footer">
 			<div class="clear">CopyLeft 2013 Cool Pics Educations</div>
 		<h:form>
-		 <h:commandLink action="parts/login.jsf"  value="Administrate" rendered="#{loginCtrl.user.isAdmin}"/>
+		 <h:outputLink value="admin/adminMenu.jsf" rendered="#{loginCtrl.user.isAdmin}">Administrate</h:outputLink>
 		</h:form>
+		<p>Thanks to our partners: <a href="http://stackoverflow.com/">StackOverflow</a> and <a href="http://ihatejsf.com/">I &lt;3 JSF</a> </p>
 		</ui:insert>
 		<ui:insert name="js">
 			<script src="http://code.jquery.com/jquery.js"></script>
