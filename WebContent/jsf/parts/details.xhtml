@@ -98,8 +98,9 @@
 		<!-- IF LOGGED ONLY-->
 		
 		<div class="row-fluid">
-			<h:form styleClass="span8 offset2" rendered="#{loginCtrl.user != null}">
-			   <h5 class="offset2">Write your own !</h5>
+	  			<h:outputText classStyle ="alert alert-warning span8 offset2" value="Connect to post a comment" rendered="#{loginCtrl.user == null}"/>
+			<h:form styleClass="span8 offset2"  rendered="#{loginCtrl.user != null}">
+				<h5 class="offset2">Write your own !</h5>
 				<p:panelGrid>
 					<p:row>
 						<p:column classStyle="span2">

@@ -22,22 +22,38 @@
 					</ui:insert>
 					
 					<ui:insert name="login">
-						<div id="login" class="inline ">
-							<h4><a href="#">Login !</a></h4>
-							<jh:form>
-								<div id="login-content" class="hidden">
-									<div>
-										<jh:inputText id="username" required="true" value="#{loginCtrl.username}">
-										</jh:inputText>
-									</div>
-									<jh:inputSecret value="#{loginCtrl.pwd}" />
-									<jh:commandButton value="OK" action="#{loginCtrl.signin}">
-								    </jh:commandButton>
-								</div>
-							</jh:form>
-							<a href="login.jsf" class="btn btn-info">Join CookMeAPoney!</a>
-					</div>
-				</ui:insert>
+				<!-- <jh:panelGroup layout="block" rendered="#{loginCtrl.user == null}"
+					styleClass="inline" id="login" /> -->
+				<div class="inline" id="login">
+					<h4>
+						<jh:link action="#" rendered="#{loginCtrl.user == null}">Login !</jh:link>
+						<jh:outputText value="W-hell-come #{loginCtrl.user.login}" rendered="#{loginCtrl.user != null}"/>
+					</h4>
+					<jh:outputText value="#{loginCtrl.totalCo} connected now" rendered="#{loginCtrl.user != null}"/>
+					<jh:form rendered="#{loginCtrl.user != null}">
+						<jh:commandLink action="#{loginCtrl.signout}">
+							Se deconnecter
+						</jh:commandLink>
+					</jh:form>
+
+					<jh:form rendered="#{loginCtrl.user == null}">
+
+						<div id="login-content" class="hidden">
+							<div>
+								<jh:inputText id="username" value="#{loginCtrl.username}"
+									required="true">
+								</jh:inputText>
+							</div>
+							<jh:inputSecret value="#{loginCtrl.pwd}" />
+							<jh:commandButton value="OK" action="#{loginCtrl.signin}">
+							</jh:commandButton>
+						</div>
+
+					</jh:form>
+					<jh:outputLink value="login.jsf" styleClass="btn btn-info"  rendered="#{loginCtrl.user == null}">Join CookMeAPoney!</jh:outputLink>
+				</div>
+				<!-- </jh:panelGroup> -->
+			</ui:insert>
 				</div>
 			</div><!--  div header end -->
 			
