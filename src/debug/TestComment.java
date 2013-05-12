@@ -20,8 +20,11 @@ public class TestComment {
 		//int id, String title, String sumup, String desc, String imgRef, Integer nbPers, String cookType, Integer cookExp, Integer duration
 		Comments Dao = new Comments();
 		ArrayList<Comment> comments;
-		Comment i = new Comment(0, "Test comment", 4, 1, 1);
-		
+		Comment i = new Comment(0, "Herp derp", 4, 1, 1);
+		for(int j = 0; j < 80; j++) {
+			i.setIdReceipe(1 + j%40);
+			i.create();
+		}
 		Dao.create(i);
 		
 		System.out.println("-------");

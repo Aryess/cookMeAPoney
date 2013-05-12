@@ -1,5 +1,6 @@
 package beans;
 
+import dao.Comments;
 import interfaces.Model;
 
 public class Comment extends Model{
@@ -15,13 +16,14 @@ public class Comment extends Model{
 	
 	public Comment(Integer id, String txt, Integer rating, Integer idU, Integer idR){
 		this.setInfo(id, txt, rating, idU, idR);
+		this.DAO = new Comments();
 	}
 	
 	@Override
 	public void clone(Model m) {
 		Comment c = (Comment) m;
 		this.setInfo(c.getId(), c.getTxt(), c.getRating(), c.getIdUser(), c.getIdUser());
-		
+		this.DAO = new Comments();
 	}
 	
 	public Integer getId() {return id;}
