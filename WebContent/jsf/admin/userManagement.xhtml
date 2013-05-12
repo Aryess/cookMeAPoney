@@ -87,16 +87,17 @@
 		   			<div class="span2">
 						<h:commandButton value="New user" styleClass="btn btn-success" >
 							<f:ajax  event="click" listener="#{userTableBean.updateModel}" render=":form:users"/>
-						    <f:ajax event="mouseup" render=":form:users"  listener="#{user.create}" />
+						    <f:ajax event="mouseup" render=":form:users"  listener="#{userTableBean.createUser}" />
 						</h:commandButton>
 						<h:commandButton value="Save user" styleClass="btn btn-info" >
 							<f:ajax  event="click" listener="#{userTableBean.updateModel}" render=":form:users"/>
-						    <f:ajax event="mouseup" render=":form:users"  listener="#{userTableBean.selectedUser.update}" />
+						    <f:ajax event="mouseup" render=":form:users"  listener="#{userTableBean.saveUser}" />
 						</h:commandButton>
 			    	</div>
 		   	</h:form>
 		   	
 		   </h:form>
+		   
 		  
 	</ui:define>
 

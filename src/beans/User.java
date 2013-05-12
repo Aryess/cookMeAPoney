@@ -33,8 +33,7 @@ public class User extends Model{
 	}
 	
 	public User() {
-		super();
-		setInfos(0, null, null, null, null, 0, null, false);
+		setInfos(-1, null, null, null, null, 0, null, false);
 		this.DAO = new Users();
 	}
 
