@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+</h:head>
+<h:body>
+    <h:form id="form">
+        Your Name: <h:inputText id="inputname" label="${msgs.prompt}" value="#{test.name}"/>
+        <br />
+        <h:commandButton  value="Display my name here, now!"  >
+            <f:ajax event="click" render="myName"  listener="#{test.doStuff}" />
+            <f:ajax event="mouseup" render="myName"  listener="#{test.sayHello}" />
+            
+        </h:commandButton>
+        <br />
+        <br />
+        <h:outputText id="myName" value="#{test.name}" />
+    </h:form>
+    
+      <h:form id="form2">
+            <h:panelGrid columns="3">
+                <h:outputLabel for="input1" value="Input 1" />
+                <h:inputText id="input1" value="#{bean.input1}" required="true" />
+                <h:message id="input1message" for="input1" />
+
+                <h:outputLabel for="input2" value="Input 2" />
+                <h:inputText id="input2" value="#{bean.input2}" required="true" />
+                <h:message id="input2message" for="input2" />
+
+                <h:panelGroup />
+                 <h:commandButton value="Submit" >
+			      	<f:ajax event="click" listener="#{bean.submit}" />
+			        <f:ajax execute="@form" render="@form" />
+			    </h:commandButton>
+                <h:messages id="messages" globalOnly="true" layout="table" />        
+            </h:panelGrid>
+        </h:form>
+</h:body>
+</html>
