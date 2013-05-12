@@ -62,6 +62,8 @@
 			  		<p:column headerText="Delete">
 			  			<h:commandButton  value="X" styleClass="btn-danger">
 			  				<f:ajax  event="click" listener="#{userTableBean.updateModel}" render=":form:users"/>
+			  				<f:ajax event="mouseup" render=":form:users"  listener="#{user.delete}" />
+       
 			  			</h:commandButton>
 			  		</p:column>
 			    </p:dataTable>
@@ -89,8 +91,10 @@
 						</h:panelGrid>
 		   			</div>
 		   			<div class="span2">
-						<p:commandButton actionListener="#{user.create}" value="New user" styleClass="btn btn-success" ajax="true">
+						<p:commandButton value="New user" styleClass="btn btn-success" ajax="true">
 							<f:ajax  event="click" listener="#{userTableBean.updateModel}" render=":form:users"/>
+						    <f:ajax event="mouseup" render=":form:users"  listener="#{user.create}" />
+       
 						</p:commandButton>
 						<p:commandButton actionListener="#{userTableBean.selectedUser.update}" value="Save user" styleClass="btn btn-info" ajax="true"/>
 			    	</div>

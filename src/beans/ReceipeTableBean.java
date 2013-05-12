@@ -31,7 +31,7 @@ public class ReceipeTableBean implements Serializable {
 	
     public ReceipeTableBean() {  
         receipes = new ArrayList<Receipe>();  
-        selectedReceipe = new Receipe(-1, "WtfReceipe", "Defaultsumup", "Faites revenir JSF dans un bouillon de caca d'oie <br/> Ajoutez un soupçon de pisse de chat pour obtenir un fumet plus délicat </br> Melangez jusqu'à obtenir une pâte onctueuse et servez sur des tranches de petit ours brun.", "", new Integer(2), "1", new Integer(1), new Integer(1204));
+        selectedReceipe = new Receipe(-1, "WtfReceipe", "Defaultsumup", "Faites revenir JSF dans un bouillon de caca d'oie <br/> Ajoutez un soupçon de pisse de chat pour obtenir un fumet plus délicat </br> Melangez jusqu'à obtenir une pâte onctueuse et servez sur des tranches de petit ours brun.", "", new Integer(2), "1", new Integer(1), new Integer(1337));
         populateRandomReceipes(receipes, 10); 
         mediumReceipesModel = new ReceipeDataModel(receipes);
     }  

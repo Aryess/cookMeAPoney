@@ -24,76 +24,103 @@
 		</h2>
 	</ui:define>
 	<ui:define name="body">
-		<div class="row-fluid">
-			<h:form id="form" styleClass="text-center span8 offset2">
-	
-				<p:panelGrid header="#{receipeTableBean.selectedReceipe.title}" styleClass="text-center pull-left">
+	 <div class="btn btn-info" onclick="history.go(-1)" ><span class="icon-arrow-left"/></div>
 				
-			 	 <p:row>
+		<div class="row-fluid">
+			<h:form id="form" styleClass="text-center span8 offset2" >
+				<p:panelGrid header="#{receipeTableBean.selectedReceipe.title}"
+					styleClass="text-center pull-left">
+
+					<p:row>
 						<p:column>
 							<span class="icon-user" />
-							<h:outputText id="output" value="#{receipeTableBean.selectedReceipe.nbofperson}" />
+							<h:outputText id="output"
+								value="#{receipeTableBean.selectedReceipe.nbofperson}" />
 						</p:column>
-						<p:column> 
+						<p:column>
 							<span class="icon-time" />
-							<h:outputText value="#{receipeTableBean.selectedReceipe.preparationduration}" />
-						 </p:column>
+							<h:outputText
+								value="#{receipeTableBean.selectedReceipe.formattedPD}" />
+						</p:column>
 						<p:column colspan="2" rowspan="2">
-						 	<h:outputText  value="#{receipeTableBean.selectedReceipe.title}" /> 
+							<h2><h:outputText value="#{receipeTableBean.selectedReceipe.title}" /></h2>
 						</p:column>
 					</p:row>
-					<p:row> 
+					<p:row>
 						<p:column>
 							<span class="icon-signal" />
-							<p:rating value="#{receipeTableBean.selectedReceipe.cookexpertise}" />
+							<p:rating
+								value="#{receipeTableBean.selectedReceipe.cookexpertise}" />
 						</p:column>
-						<p:column> 
-						 	<span class="icon-barcode"/>
-							<h:outputText value="#{receipeTableBean.selectedReceipe.cooktype}"/>
-						</p:column>		
-					</p:row>			
+						<p:column>
+							<span class="icon-barcode" />
+							<h:outputText
+								value="#{receipeTableBean.selectedReceipe.cooktype}" />
+						</p:column>
+					</p:row>
 				</p:panelGrid>
-			<img src="#{receipeTableBean.selectedReceipe.imageref}" style="width: 5%; height: 5%;" />
-				<h:outputText value="#{receipeTableBean.selectedReceipe.description}" />
-			
-			
+				<img src="#{receipeTableBean.selectedReceipe.imageref}"
+					style="width: 5%; height: 5%;" />
+				<h:outputText
+					value="#{receipeTableBean.selectedReceipe.description}" />
+
+
 			</h:form>
 
 		</div>
+		
+	   <h5 class="offset2">Comments about <h:outputText value="#{receipeTableBean.selectedReceipe.title}"/></h5>
 		<div class="row-fluid">
-			<h:dataTable id="comment" value="#{receipeTableBean.selectedReceipe.comments}" var="comment" styleClass="span8 offset2">
-					<h:column classStyle="span2">
-						<h:outputText id="writer" value="#{comment.idUser}" />
-					</h:column >
-					<h:column classStyle="span2">
-						<h:outputText id="txt" value="#{comment.txt}" />
-					</h:column>
-					<h:column classStyle="span2">
-						<p:rating value="#{comment.rating}" disabled="true" />
-					</h:column>
+			<h:form>
+			<h:dataTable id="comment"
+				value="#{receipeTableBean.selectedReceipe.comments}" var="comment"
+				styleClass="span8 offset2">
+				<h:column classStyle="span2">
+					<span class="icon-user" />
+					<h:outputText id="writer" value="#{comment.author}" />
+				</h:column>
+				<h:column classStyle="span2">
+					<h:outputText id="txt" value="#{comment.txt}" />
+				</h:column>
+				<h:column classStyle="span4">
+					<p:rating value="#{comment.rating}" disabled="true" />
+				</h:column>
 			</h:dataTable>
-			<!-- IF LOGGED ONLY-->
+			</h:form>
 			
 		</div>
+		<!-- IF LOGGED ONLY-->
+		
+		 <h5 class="offset2">Write your own !</h5>
 		<div class="row-fluid">
-			<h:form styelClass="span8 offset2" rendered="#{loginCtrl.user != null}">
+			<h:form styleClass="span8 offset2">
 				<p:panelGrid>
 					<p:row>
-						<p:column>
-							<p:inputTextarea rows="6" cols="33" value="#{comment.txt}"/> 
+						<p:column classStyle="span2">
+							<span class="icon-user" />
+							<h:outputText id="writer" value="#{user.username}" />
 						</p:column>
-						<p:column>
+						<p:column classStyle="span2">
+							<p:inputTextarea rows="6" cols="100" value="#{comment.txt}" />
+						</p:column>
+						<p:column classStyle="span2">
 							<p:rating value="#{comment.rating}" />
+						</p:column>
+						<p:column classStyle="span2">
+							<h:commandButton value="Save" 
+								styleClass="btn btn-info">
+								<f:ajax action="#{comment.setIdUser}" value="#{user.id}" />
+								<f:ajax action="#{comment.setIdReceipe}" value="#{receipe.id}" />
+								<f:ajax action="#{comment.create}" event="click" render="comment"/>
+							</h:commandButton>
+							<h:commandButton value="X" actionListener="#{comment.delete}"
+								styleClass="btn btn-danger" rendered="#{loginCtrl.user.isAdmin}">
+							</h:commandButton>
 						</p:column>
 					</p:row>
 				</p:panelGrid>
-				<p:commandButton value="Save" actionListener="#{comment.create}">
-					<p:ajax action="#{comment.setIdUser}" value="#{user.id}"/>
-					<p:ajax action="#{comment.setIdReceipe}" value="#{receipe.id}"/>
-				</p:commandButton>
-				<p:commandButton value="Save" actionListener="#{comment.delete}" rendered="#{loginCtrl.user.isAdmin}">
-				</p:commandButton>
-				
+
+
 			</h:form>
 		</div>
 	</ui:define>

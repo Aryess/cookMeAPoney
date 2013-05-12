@@ -54,7 +54,7 @@ public class Receipe extends Model{
 		super();
 		this.setInfos(id, title, sumup, desc, imgRef, nbPers, cookType, cookExp, duration);
 		this.comments = new ArrayList<Comment>();
-		comments.add(new Comment(-1, "Lorem Ipsum version ultra courte ou pas en fait qui veut rien dire au final juste pour tesetr la largeur du champ mais c'est pas grave ça se verra pas en prod car on peut commenter la ligne et faire comme si de rien n'etait c'est super java vraiment, j'aime beaucoup 2e surtout jsf qui suxx avec son jquery aleatoire et son positionnement pourrave et que dire des erreurs qui ne parlent à personne ou celels qui ne s'afichent pas le mapping est tellement bien fait que si ça marche pas ça se voit que au test sans aucun message d'erreur j'aime jsf", 0, -1, id));
+		comments.add(new Comment(-1, "Lorem Ipsum version ultra courte ou pas en fait qui veut rien dire au final juste pour tesetr la largeur du champ mais c'est pas grave ça se verra pas en prod car on peut commenter la ligne et faire comme si de rien n'etait c'est super java vraiment, j'aime beaucoup 2e surtout jsf qui suxx avec son jquery aleatoire et son positionnement pourrave et que dire des erreurs qui ne parlent à personne ou celels qui ne s'afichent pas le mapping est tellement bien fait que si ça marche pas ça se voit que au test sans aucun message d'erreur j'aime jsf", 5, -1, id));
 		
 		this.setDao(new Receipes());
 	}
@@ -70,7 +70,8 @@ public class Receipe extends Model{
 	public Integer getCookexpertise() {return cookexpertise;}
 	public Integer getPreparationduration() {return preparationduration;}
 	public ArrayList<Comment> getComments() {return comments;}
-
+	public String getFormattedPD(){ return new String(this.preparationduration.toString().substring(2)+":"+this.preparationduration.toString().substring(0,2));}
+	
 	public void setId(Integer id) {this.id = id;}
 	public void setTitle(String title) {this.title = title;}
 	public void setSumup(String sumup) {this.sumup = sumup;}
