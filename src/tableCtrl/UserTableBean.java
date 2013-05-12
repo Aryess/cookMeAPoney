@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
 import org.primefaces.event.SelectEvent;
@@ -14,6 +15,7 @@ import beans.User;
 import dao.Users;
 
 @ManagedBean
+@SessionScoped
 public class UserTableBean {
 
 	
@@ -41,9 +43,21 @@ public class UserTableBean {
 	}
 
 	public void setSelectedUser(User selectedUser) {
-		this.selectedUser = selectedUser;
+		this.selectedUser.clone(selectedUser);
 	}
 
+	public void createUser() { System.out.println("createUser");
+		this.selectedUser = new User();
+	}
+	
+	public void saveUser() {System.out.println("saveUser " + this.selectedUser);
+		if(this.selectedUser != null) {
+			if(this.selectedUser.getId() == -1)
+				this.selectedUser.create();
+			else
+				this.selectedUser.update();
+		}
+	}
 	public UserDataModel getMediumUsersModel() {
 		return mediumUsersModel;
 	}
