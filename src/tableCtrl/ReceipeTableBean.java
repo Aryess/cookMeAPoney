@@ -42,7 +42,7 @@ public class ReceipeTableBean implements Serializable {
         selectedReceipe = new Receipe(-1, "WtfReceipe", "Defaultsumup", "Faites revenir JSF dans un bouillon de caca d'oie <br/> Ajoutez un soupçon de pisse de chat pour obtenir un fumet plus délicat </br> Melangez jusqu'à obtenir une pâte onctueuse et servez sur des tranches de petit ours brun.", "", new Integer(2), "1", new Integer(1), new Integer(1337));
         populateRandomReceipes(receipes, 10); 
         this.DAO = new Receipes();
-        mediumReceipesModel = new ReceipeDataModel(receipes);
+        mediumReceipesModel = new ReceipeDataModel(receipes);//DAO.getReceipes());
     }  
       
     public Receipe getSelectedReceipe() {  
@@ -55,12 +55,10 @@ public class ReceipeTableBean implements Serializable {
 
     public void setSelectedReceipe(Receipe selectedReceipe) {  
         this.selectedReceipe = selectedReceipe; 
-        System.err.println(this.selectedReceipe.getTitle());
     }  
     
     public void onRowSelect(SelectEvent event) {
-    	System.out.println((Receipe) event.getObject());
-		FacesMessage msg = new FacesMessage("Receipe Selected",
+  	FacesMessage msg = new FacesMessage("Receipe Selected",
 				((Receipe) event.getObject()).getId().toString());
 
 		FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -85,7 +83,7 @@ public class ReceipeTableBean implements Serializable {
   
     public void updateModel(){
 		
-    	mediumReceipesModel = new ReceipeDataModel(receipes);
+    	mediumReceipesModel = new ReceipeDataModel(DAO.getReceipes());
 	}
 	
 }  

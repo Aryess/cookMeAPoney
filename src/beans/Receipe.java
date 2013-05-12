@@ -53,9 +53,9 @@ public class Receipe extends Model{
 	public Receipe(int id, String title, String sumup, String desc, String imgRef, Integer nbPers, String cookType, Integer cookExp, Integer duration) {
 		super();
 		this.setInfos(id, title, sumup, desc, imgRef, nbPers, cookType, cookExp, duration);
-		this.comments = new ArrayList<Comment>();
+		/*this.comments = new ArrayList<Comment>();
 		comments.add(new Comment(-1, "Lorem Ipsum version ultra courte ou pas en fait qui veut rien dire au final juste pour tesetr la largeur du champ mais c'est pas grave ça se verra pas en prod car on peut commenter la ligne et faire comme si de rien n'etait c'est super java vraiment, j'aime beaucoup 2e surtout jsf qui suxx avec son jquery aleatoire et son positionnement pourrave et que dire des erreurs qui ne parlent à personne ou celels qui ne s'afichent pas le mapping est tellement bien fait que si ça marche pas ça se voit que au test sans aucun message d'erreur j'aime jsf", 5, -1, id));
-		
+		*/
 		this.setDao(new Receipes());
 	}
 

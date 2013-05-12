@@ -97,14 +97,14 @@
 		</div>
 		<!-- IF LOGGED ONLY-->
 		
-		 <h5 class="offset2">Write your own !</h5>
 		<div class="row-fluid">
-			<h:form styleClass="span8 offset2">
+			<h:form styleClass="span8 offset2" rendered="#{loginCtrl.user != null}">
+			   <h5 class="offset2">Write your own !</h5>
 				<p:panelGrid>
 					<p:row>
 						<p:column classStyle="span2">
 							<span class="icon-user" />
-							<h:outputText id="writer" value="#{user.username}" />
+							<h:outputText id="writer" value="#{loginCtrl.user.username}" />
 						</p:column>
 						<p:column classStyle="span2">
 							<p:inputTextarea rows="6" cols="100" value="#{comment.txt}" />
@@ -121,8 +121,21 @@
 						</p:column>
 					</p:row>
 				</p:panelGrid>
-
-
+			</h:form>
+			<h:form rendered="#{loginCtrl.user == null}">
+			 	
+				<div id="login-content" class="span4 offset2">
+					<h5 >Log urself to leave a comment</h5>
+			
+					<div>
+						<h:inputText id="username" value="#{loginCtrl.username}"
+							required="true">
+						</h:inputText>
+					</div>
+					<h:inputSecret value="#{loginCtrl.pwd}" />
+					<h:commandButton value="OK" action="#{loginCtrl.signin}">
+					</h:commandButton>
+				</div>
 			</h:form>
 		</div>
 	</ui:define>

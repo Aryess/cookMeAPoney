@@ -62,8 +62,6 @@ public class UserTableBean {
 		FacesContext.getCurrentInstance().addMessage(null, msg);
 	}
 	public void updateModel(){
-		System.out.println("UPDATEDONE");
-		
 		mediumUsersModel = new UserDataModel(DAO.getUsers());
 	}
 	
